@@ -1,0 +1,1095 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Lanartis Group</title>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@400&display=swap">
+<style>
+/* Layout: Planet Budapest-féle csendes elegancia — meleg szürkésbézs alap, könnyű súlyú groteszk, sok levegő,
+   középre zárt, görgetésre sötétedő kulcsmondat, nagy fotósávok enyhén lekerekítve; a területek csak finom árnyalattal különülnek el. */
+:root{
+  --bg:#ECE8E4; --paper:#F6F4F1; --ink:#4A463F; --ink-strong:#2E2B26; --muted:#8E887E; --faint:rgba(74,70,63,.22); --line:rgba(74,70,63,.16);
+  --accent:#7F8B6A; --accent-ink:#FFFFFF; --on-photo:#FFFFFF;
+  --bar-bg:rgba(248,247,245,.86); --menu-bg:rgba(248,247,245,.97); --ph-bg:#D8D2C9; --hover:rgba(74,70,63,.06); --hover-2:rgba(255,255,255,.4); --note:#6A6A48; --cream:var(--bg); --shadow:0 1px 0 rgba(0,0,0,.03);
+  --c-ing:#E6E0D6; --c-pet:#E8DFDA; --c-aqua:#DDE3DF; --c-bait:#E2E3D8; --c-mush:#E5DED7;
+  --f:"Geist","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --f-serif:"Instrument Serif",Georgia,serif;
+  --f-mono:"Geist Mono",ui-monospace,Menlo,monospace;
+  --gut:max(clamp(16px,4vw,48px), calc((100vw - 1720px) / 2)); --r:6px; --ease:cubic-bezier(.22,1,.36,1);
+}
+:root[data-theme="dark"]{--bg:#0B1322; --paper:#111C2F; --ink:#C9D2E0; --ink-strong:#F1F4F9; --muted:#8392A8; --faint:rgba(201,210,224,.2); --line:rgba(201,210,224,.13);
+  --accent:#7FA6E0; --accent-ink:#0B1322; --bar-bg:rgba(13,22,39,.82); --menu-bg:rgba(13,22,39,.97); --ph-bg:#16233A; --hover:rgba(201,210,224,.07); --hover-2:rgba(255,255,255,.04); --note:#B7C79A;
+  --c-ing:#0F1A2C; --c-pet:#0F1A2C; --c-aqua:#0F1A2C; --c-bait:#0F1A2C; --c-mush:#0F1A2C; color-scheme:dark;}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0B1322; --paper:#111C2F; --ink:#C9D2E0; --ink-strong:#F1F4F9; --muted:#8392A8; --faint:rgba(201,210,224,.2); --line:rgba(201,210,224,.13);
+  --accent:#7FA6E0; --accent-ink:#0B1322; --bar-bg:rgba(13,22,39,.82); --menu-bg:rgba(13,22,39,.97); --ph-bg:#16233A; --hover:rgba(201,210,224,.07); --hover-2:rgba(255,255,255,.04); --note:#B7C79A;
+  --c-ing:#0F1A2C; --c-pet:#0F1A2C; --c-aqua:#0F1A2C; --c-bait:#0F1A2C; --c-mush:#0F1A2C; color-scheme:dark;}}
+:root[data-lang="hu"] .en, :root[data-lang="en"] .hu{display:none !important}
+*{box-sizing:border-box}
+body{background:var(--bg); color:var(--ink); font:400 1rem/1.65 var(--f); -webkit-font-smoothing:antialiased; overflow-x:hidden}
+a{color:inherit}
+p{margin:0; max-width:60ch}
+h1,h2,h3{margin:0; font-family:var(--f); font-weight:400; letter-spacing:-.035em; line-height:1.02; color:var(--ink-strong); text-wrap:balance; overflow-wrap:break-word}
+h1{font-size:clamp(2.8rem,7vw,6.4rem); font-weight:300}
+h2{font-size:clamp(2rem,4.2vw,3.6rem); font-weight:300}
+h3{font-size:clamp(1.3rem,2vw,1.75rem); letter-spacing:-.02em; line-height:1.15}
+.ser{font-family:var(--f-serif); font-style:italic; font-weight:400; letter-spacing:-.01em}
+.sub{font:300 clamp(1.1rem,1.6vw,1.35rem)/1.4 var(--f); color:var(--muted); letter-spacing:-.01em}
+.label{font:500 .72rem/1.3 var(--f); letter-spacing:.14em; text-transform:uppercase; color:var(--muted); overflow-wrap:anywhere}
+.muted{color:var(--muted)}
+.pad{padding-inline:var(--gut)}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:4px}
+
+/* progress + header (floating bar, Planet-style) */
+.progress{position:fixed; top:0; left:0; right:0; height:2px; background:var(--accent); transform-origin:0 50%; transform:scaleX(0); z-index:60}
+header.site{position:fixed; top:calc(env(safe-area-inset-top,0px) + 14px); left:var(--gut); right:var(--gut); z-index:50; transition:transform .7s var(--ease)}
+header.site.hide{transform:translateY(-140%)}
+.bar{display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:20px; min-height:60px; padding-inline:18px !important; background:var(--bar-bg); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-radius:14px; box-shadow:var(--shadow)}
+.logo{grid-column:1; grid-row:1; display:flex; align-items:center; min-height:44px; text-decoration:none; font:600 1.3rem/1 var(--f); letter-spacing:-.03em; color:var(--ink-strong); white-space:nowrap}
+.logo .ser{font:300 1.3rem/1 var(--f); font-style:normal; letter-spacing:-.03em; margin-left:.25em; color:var(--ink)}
+nav.main{grid-column:2; grid-row:1; display:flex; flex-wrap:nowrap; justify-content:center; min-width:0}
+nav.main a{display:flex; align-items:center; min-height:44px; padding:0 11px; white-space:nowrap; text-decoration:none; font:500 .88rem var(--f); letter-spacing:-.005em; color:var(--ink); border-radius:8px; transition:color .3s, background .3s}
+nav.main a:hover{background:var(--hover)}
+nav.main a[aria-current="page"]{color:var(--accent)}
+.lang{grid-column:3; grid-row:1; justify-self:end; display:flex}
+.lang button{min-height:44px; min-width:44px; border:0; background:transparent; color:var(--muted); font:500 .72rem var(--f); letter-spacing:.12em; cursor:pointer}
+.lang button[aria-pressed="true"]{color:var(--ink-strong); text-decoration:underline; text-underline-offset:5px}
+.hdr-tools{grid-column:3; grid-row:1; justify-self:end; display:flex; align-items:center; gap:4px}
+@media (max-width:1040px){.bar{grid-template-columns:auto minmax(0,1fr) auto auto} .bar .menu-btn{grid-column:4; margin-right:0} .bar .hdr-tools{grid-column:3}}
+.ldd{position:relative}
+.ldd-btn,.theme-btn{display:flex; align-items:center; justify-content:center; gap:8px; min-height:44px; min-width:44px; padding:0 10px; border:0; border-radius:10px; background:transparent; color:var(--ink-strong); font:500 .74rem var(--f); letter-spacing:.12em; cursor:pointer}
+.ldd-btn:hover,.theme-btn:hover{background:var(--hover)}
+.ldd-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
+.ldd-list{position:absolute; right:0; top:calc(100% + 8px); min-width:170px; list-style:none; margin:0; padding:6px; background:var(--menu-bg); backdrop-filter:blur(14px); border-radius:12px; box-shadow:0 12px 32px -12px rgba(0,0,0,.3); z-index:70}
+.ldd-list li{display:flex; justify-content:space-between; align-items:center; gap:12px; min-height:44px; padding:0 12px; border-radius:8px; cursor:pointer; font-size:.92rem; color:var(--ink)}
+.ldd-list li:hover,.ldd-list li:focus{background:var(--hover); outline:none}
+.ldd-list li[aria-selected="true"]{color:var(--accent)}
+.ldd-list li small{font:500 .7rem var(--f); letter-spacing:.12em; color:var(--muted)}
+.theme-btn .i-sun{display:none}
+:root[data-theme="dark"] .theme-btn .i-sun{display:block} :root[data-theme="dark"] .theme-btn .i-moon{display:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .theme-btn .i-sun{display:block} :root:not([data-theme="light"]) .theme-btn .i-moon{display:none}}
+.menu-btn{display:none; grid-column:3; margin-right:4px; grid-row:1; justify-self:end; min-height:44px; padding:0 14px; border:0; border-radius:10px; background:var(--ink); color:var(--paper); font:500 .72rem var(--f); letter-spacing:.12em; text-transform:uppercase; cursor:pointer}
+.mobile-nav{display:none}
+.navdrop{display:flex; align-items:center; gap:8px; min-height:44px; padding:0 8px; border:0; background:transparent; color:var(--ink); font:500 .72rem var(--f); letter-spacing:.12em; text-transform:uppercase; cursor:pointer}
+.navdrop[aria-expanded="true"] svg{transform:rotate(180deg)}
+@media (max-width:1040px){ nav.main{display:none} .menu-btn{display:block} }
+@media all{
+  .mobile-nav:not([hidden]){display:grid; margin-top:8px; padding:8px 18px 14px !important; background:var(--paper); border-radius:14px; box-shadow:0 18px 40px -16px rgba(0,0,0,.35)}
+  .mobile-nav a{display:flex; justify-content:space-between; align-items:center; min-height:52px; text-decoration:none; border-bottom:1px solid var(--line); font:300 1.4rem var(--f); letter-spacing:-.02em}
+}
+@media (max-width:520px){ .logo, .logo .ser{font-size:1.1rem} .bar{padding-inline:10px !important} }
+
+/* buttons */
+.btns{display:flex; flex-wrap:wrap; gap:10px}
+.btn{display:inline-flex; align-items:center; gap:12px; min-height:50px; padding:0 22px; border-radius:10px; text-decoration:none; font:500 .74rem var(--f); letter-spacing:.12em; text-transform:uppercase; background:var(--accent); color:var(--accent-ink); border:1px solid var(--accent); transition:background .4s, color .4s, border-color .4s}
+.btn:hover{background:var(--ink-strong); border-color:var(--ink-strong)}
+.btn svg{transition:transform .5s var(--ease)} .btn:hover svg{transform:translateX(4px)}
+.btn.ghost{background:transparent; color:var(--on-photo); border-color:rgba(255,255,255,.5)}
+.btn.ghost:hover{background:var(--on-photo); color:var(--ink-strong); border-color:var(--on-photo)}
+
+/* photos */
+.ph{position:relative; overflow:hidden; background:var(--ph-bg); border-radius:var(--r)}
+.ph canvas,.ph img,.ph video{position:absolute; left:0; top:-8%; width:100%; height:116%; object-fit:cover; display:block; transition:transform 1.6s var(--ease), filter .8s}
+.ph .cap{position:absolute; right:10px; bottom:10px; z-index:3; padding:4px 8px; border-radius:4px; font:400 .62rem var(--f-mono); color:#fff; background:rgba(0,0,0,.35); max-width:calc(100% - 20px)}
+.shade::after{content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg,rgba(20,18,15,.25) 0%,rgba(20,18,15,0) 30%,rgba(20,18,15,.1) 60%,rgba(20,18,15,.6) 100%)}
+.shade h1,.shade h2,.shade h3{color:var(--on-photo)}
+.shade .label,.shade .sub{color:rgba(255,255,255,.82)}
+
+/* hero */
+.hero{margin:8px; min-height:calc(100vh - 16px); min-height:max(620px,calc(100svh - 16px)); display:flex; align-items:flex-end; color:var(--on-photo); border-radius:18px}
+.hero .in{will-change:filter,opacity,transform; position:relative; z-index:2; width:100%; display:grid; gap:24px; padding-block:130px 40px}
+.hero .in > *{min-width:0}
+.hero h1 .ln{display:block; overflow:hidden; padding-bottom:.06em}
+.hero h1 .ln > span{display:inline-block; animation:up 1.4s var(--ease) both}
+.hero h1 .ln:nth-child(2) > span{animation-delay:.1s} .hero h1 .ln:nth-child(3) > span{animation-delay:.2s}
+@keyframes up{from{transform:translateY(105%)}}
+.hero .row{display:flex; justify-content:space-between; align-items:end; gap:24px; flex-wrap:wrap; border-top:1px solid rgba(255,255,255,.3); padding-top:22px}
+.hero .lead{max-width:44ch; color:rgba(255,255,255,.88); font-weight:300; font-size:1.05rem}
+.fade-in{animation:fi 1.3s .45s var(--ease) both} @keyframes fi{from{opacity:0; transform:translateY(14px)}}
+.chips{display:flex; flex-wrap:wrap; gap:6px; list-style:none; margin:0; padding:0}
+.chips li{min-height:30px; display:flex; align-items:center; padding:0 12px; border-radius:999px; border:1px solid rgba(255,255,255,.4); font:500 .66rem var(--f); letter-spacing:.12em; text-transform:uppercase}
+
+/* info row */
+.info{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:0; padding-block:12px}
+.info > div{padding:28px 24px 28px 0; display:grid; gap:6px; align-content:start}
+.info > div + div{border-left:1px solid var(--line); padding-left:24px}
+.info b{font:300 clamp(1.4rem,2.2vw,1.9rem)/1.1 var(--f); letter-spacing:-.03em; color:var(--ink-strong)}
+.info span{color:var(--muted); font-size:.9rem}
+@media (max-width:860px){.info{grid-template-columns:1fr 1fr} .info > div:nth-child(3){border-left:0; padding-left:0} .info > div:nth-child(n+3){border-top:1px solid var(--line)}}
+
+/* marquee — light, quiet */
+.marquee{overflow:hidden; padding-block:22px; border-block:1px solid var(--line)}
+.marquee .track{display:flex; gap:56px; width:max-content; animation:mq 60s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* bands */
+.band{position:relative; padding-block:clamp(80px,11vw,160px)}
+.band.cream{background:var(--bg)}
+.wave{display:none}
+.statement{font:400 clamp(1.5rem,3vw,2.6rem)/1.22 var(--f); letter-spacing:-.025em; color:var(--ink); max-width:30ch; text-wrap:pretty}
+.statement .ser{font-size:1.06em}
+[data-fill] .w{color:var(--faint); transition:color .4s}
+[data-fill] .w.on{color:var(--ink)}
+.split{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,2.2fr); gap:clamp(24px,5vw,80px)}
+@media (max-width:860px){.split{grid-template-columns:1fr}}
+.center{display:grid; justify-items:center; text-align:center; gap:26px}
+.center p{margin-inline:auto}
+
+/* division rows */
+.drows{border-top:1px solid var(--line)}
+.drow{position:relative; display:block; text-decoration:none; border-bottom:1px solid var(--line); overflow:hidden}
+.drow .ph{position:absolute; inset:6px; opacity:0; transition:opacity .8s var(--ease); border-radius:10px}
+.drow .ph :is(canvas,img){transform:scale(1.1)}
+.drow .ph::after{content:""; position:absolute; inset:0; background:rgba(20,18,15,.35)}
+.drow .in{position:relative; z-index:2; display:grid; grid-template-columns:110px minmax(0,1.3fr) minmax(0,1fr) 48px; gap:24px; align-items:center; padding-block:30px; transition:padding .9s var(--ease)}
+.drow .in > *{min-width:0}
+.drow .no{font:500 .7rem var(--f); letter-spacing:.14em; text-transform:uppercase; color:var(--muted); transition:color .5s}
+.drow h3{font-size:clamp(1.8rem,3.6vw,3.2rem); font-weight:300; letter-spacing:-.035em; line-height:1.05; transition:transform .9s var(--ease), color .5s}
+.drow p{color:var(--muted); font-size:.95rem; transition:color .5s}
+.drow .go{width:48px; height:48px; border-radius:50%; border:1px solid var(--line); display:grid; place-items:center; transition:background .5s, color .5s, border-color .5s}
+.drow:hover .ph{opacity:1}
+.drow:hover .ph :is(canvas,img){transform:scale(1)}
+.drow:hover .in{padding-block:clamp(64px,8vw,110px)}
+.drow:hover h3{transform:translateX(10px); color:#fff}
+.drow:hover p, .drow:hover .no{color:rgba(255,255,255,.88)}
+.drow:hover .go{background:#fff; color:var(--ink-strong); border-color:#fff}
+@media (max-width:860px){ .drow .in{grid-template-columns:minmax(0,1fr) 48px; gap:10px 16px; padding-block:26px} .drow .no{grid-column:1 / -1} .drow p{grid-column:1} .drow .go{grid-column:2; grid-row:2} }
+
+/* bleed photo */
+.bleed{margin:8px; min-height:clamp(420px,78vh,800px); display:flex; align-items:flex-end; border-radius:18px}
+.bleed .in{position:relative; z-index:2; padding-block:44px; width:100%}
+.bleed .q{font:300 clamp(1.8rem,4vw,3.4rem)/1.12 var(--f); letter-spacing:-.03em; color:#fff; max-width:22ch}
+
+/* numbered list */
+.prog{list-style:none; margin:0; padding:0; counter-reset:n; border-top:1px solid var(--line)}
+.prog li{counter-increment:n; display:grid; grid-template-columns:minmax(0,110px) minmax(0,1fr); gap:24px; padding-block:26px; border-bottom:1px solid var(--line)}
+.prog li::before{content:"0" counter(n); font:300 clamp(1.6rem,3vw,2.4rem)/1 var(--f); letter-spacing:-.03em; color:var(--accent)}
+.prog b{display:block; font:400 clamp(1.2rem,1.8vw,1.5rem)/1.2 var(--f); letter-spacing:-.02em; color:var(--ink-strong); margin-bottom:6px}
+.prog span{color:var(--muted)}
+@media (max-width:620px){.prog li{grid-template-columns:1fr; gap:8px}}
+
+/* division blocks */
+.block{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,2.2fr); gap:clamp(24px,5vw,80px)}
+.block .side{display:grid; gap:16px; align-content:start}
+.block .body{display:grid; gap:28px; min-width:0}
+@media (max-width:860px){.block{grid-template-columns:1fr}}
+.rows{list-style:none; margin:0; padding:0; border-top:1px solid var(--line)}
+.rows li{display:grid; grid-template-columns:minmax(0,250px) minmax(0,1fr); gap:20px; padding-block:20px; border-bottom:1px solid var(--line); transition:padding .7s var(--ease)}
+.rows li:hover{padding-left:10px}
+.rows strong{font:400 1.12rem/1.3 var(--f); letter-spacing:-.015em; color:var(--ink-strong)}
+.rows span{color:var(--muted)}
+@media (max-width:620px){.rows li{grid-template-columns:1fr; gap:4px}}
+.tbl{overflow-x:auto; border-top:1px solid var(--line)}
+table{width:100%; border-collapse:collapse; min-width:540px}
+th,td{text-align:left; padding:15px 14px 15px 0; border-bottom:1px solid var(--line); vertical-align:top}
+th{font:500 .68rem var(--f); letter-spacing:.14em; text-transform:uppercase; color:var(--muted)}
+td:first-child{color:var(--ink-strong)}
+td .lat{display:block; margin-top:2px; font:italic 400 .98rem var(--f-serif); color:var(--muted)}
+.gal{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px}
+.gal .ph{aspect-ratio:3/4}
+.gal .ph :is(canvas,img){filter:saturate(.55)}
+.gal .ph:hover :is(canvas,img){filter:none; transform:scale(1.05)}
+@media (max-width:620px){.gal{grid-template-columns:1fr 1fr} .gal .ph:first-child{grid-column:1 / -1; aspect-ratio:16/10}}
+.species{display:grid; grid-template-columns:1fr 1fr; gap:8px}
+.species .ph{aspect-ratio:4/5}
+.species .ph:hover :is(canvas,img){transform:scale(1.04)}
+.species .txt{padding-top:18px; display:grid; gap:4px}
+.species .lat{font:italic 400 1.15rem var(--f-serif); color:var(--muted)}
+@media (max-width:720px){.species{grid-template-columns:1fr}}
+.note{border-left:1px solid var(--accent); padding:8px 0 8px 14px; font:400 .8rem/1.55 var(--f-mono); color:var(--note)}
+i.fill{font-style:normal; font-family:var(--f-mono); font-size:.82em; color:var(--note); border-bottom:1px dashed currentColor}
+
+/* next + cta */
+.next{margin:8px; min-height:clamp(340px,60vh,600px); display:flex; align-items:flex-end; text-decoration:none; border-radius:18px}
+.next .in{position:relative; z-index:2; width:100%; padding-block:40px; display:flex; justify-content:space-between; align-items:end; gap:20px; flex-wrap:wrap}
+.next .in > *{min-width:0}
+.next h2{font-size:clamp(2.6rem,7vw,6rem); transition:transform 1s var(--ease)}
+.next:hover h2{transform:translateX(12px)}
+.next:hover :is(canvas,img){transform:scale(1.04)}
+.cta{padding-block:clamp(90px,12vw,170px)}
+.cta h2{font-size:clamp(3rem,9vw,8rem); font-weight:300}
+.cta .row{display:flex; justify-content:space-between; gap:24px; align-items:end; flex-wrap:wrap; margin-top:28px}
+
+/* contact */
+.clist{list-style:none; margin:0; padding:0; border-top:1px solid var(--line)}
+.clist li{display:grid; grid-template-columns:90px minmax(0,1fr) minmax(0,1fr); gap:20px; align-items:center; padding-block:22px; border-bottom:1px solid var(--line)}
+.clist .no{font:500 .7rem var(--f); letter-spacing:.14em; color:var(--muted)}
+.clist h3{font-weight:300; font-size:clamp(1.5rem,2.6vw,2.2rem)}
+@media (max-width:720px){.clist li{grid-template-columns:1fr; gap:4px}}
+.copy{display:flex; flex-wrap:wrap; gap:14px; align-items:center}
+.copy code{font:300 clamp(1.6rem,4.5vw,3.6rem)/1.1 var(--f); letter-spacing:-.03em; color:var(--ink-strong); user-select:all; word-break:break-all}
+.copy button{min-height:44px; padding:0 16px; border-radius:10px; border:1px solid var(--line); background:var(--paper); color:var(--ink); font:500 .72rem var(--f); letter-spacing:.12em; text-transform:uppercase; cursor:pointer}
+
+
+.rows .lat{display:block; margin-top:2px; font:italic 400 .98rem var(--f-serif); color:var(--muted)}
+.hero video{z-index:0}
+/* ---- interactive content blocks ---- */
+.lead-p{font:300 clamp(1.25rem,2vw,1.7rem)/1.4 var(--f); letter-spacing:-.02em; color:var(--ink); max-width:44ch}
+.stats{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border-top:1px solid var(--line)}
+.stat{display:grid; gap:4px; padding:22px 16px 22px 0; align-content:start}
+.stat + .stat{border-left:1px solid var(--line); padding-left:18px}
+.stat b{font:300 clamp(2.2rem,4.4vw,3.8rem)/1 var(--f); letter-spacing:-.04em; color:var(--ink-strong); font-variant-numeric:tabular-nums}
+.stat .suf{font:400 .95rem var(--f); color:var(--accent); min-height:1.2em}
+@media (max-width:760px){.stats{grid-template-columns:1fr 1fr} .stat:nth-child(3){border-left:0; padding-left:0} .stat:nth-child(n+3){border-top:1px solid var(--line)}}
+.sticky-wrap{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(20px,3vw,48px)}
+.st-list{list-style:none; margin:0; padding:0}
+.st-item{min-height:min(52vh,560px); display:grid; align-content:center; gap:10px; padding-block:24px; border-top:1px solid var(--line); opacity:.3; transition:opacity .5s var(--ease)}
+.st-item.on{opacity:1}
+.st-no{font:400 .8rem var(--f-mono); color:var(--accent)}
+.st-media{position:relative}
+.st-frame{position:sticky; top:110px; aspect-ratio:4/5; border-radius:10px; overflow:hidden; background:var(--ph-bg)}
+.st-frame img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.06); transition:opacity .9s var(--ease), transform 1.4s var(--ease)}
+.st-frame img.on{opacity:1; transform:none}
+.st-mob{display:none}
+@media (max-width:860px){ .sticky-wrap{grid-template-columns:1fr} .st-media{display:none} .st-item{min-height:0; opacity:1} .st-mob{display:block; aspect-ratio:16/10; margin-top:10px} }
+.hv{display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); gap:clamp(20px,3vw,48px); align-items:start}
+.hv-list{list-style:none; margin:0; padding:0; border-top:1px solid var(--line)}
+.hv-list li{display:grid; grid-template-columns:minmax(0,1fr) 30px; gap:14px; align-items:center; min-height:44px; padding:18px 6px; border-bottom:1px solid var(--line); cursor:default; outline-offset:-2px; transition:padding .6s var(--ease), background .4s}
+.hv-list li p{max-height:0; overflow:hidden; opacity:0; transition:max-height .6s var(--ease), opacity .5s, margin .5s}
+.hv-list li.on{padding-left:14px; background:var(--hover-2)}
+.hv-list li.on p{max-height:9em; opacity:1; margin-top:6px}
+.hv-list h3{font-weight:300}
+.hv-arr{color:var(--muted); transition:transform .5s var(--ease), color .3s}
+.hv-list li.on .hv-arr{transform:translateX(4px); color:var(--accent)}
+.hv-media{position:sticky; top:110px; aspect-ratio:4/5; border-radius:10px; overflow:hidden; background:var(--ph-bg)}
+.hv-media img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.05); transition:opacity .7s var(--ease), transform 1.2s var(--ease)}
+.hv-media img.on{opacity:1; transform:none}
+@media (max-width:860px){ .hv{grid-template-columns:1fr} .hv-media{position:relative; top:0; aspect-ratio:16/10; order:-1} }
+.tab-bar{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:18px}
+.tab-bar button{min-height:44px; padding:0 16px; border-radius:10px; border:1px solid var(--line); background:transparent; color:var(--ink); font:500 .88rem var(--f); cursor:pointer; transition:background .3s, color .3s}
+.tab-bar button[aria-selected="true"]{background:var(--ink-strong); color:var(--paper); border-color:var(--ink-strong)}
+.pills-l{display:flex; flex-wrap:wrap; gap:8px; list-style:none; margin:0; padding:0}
+.pills-l li{padding:10px 14px; border-radius:10px; background:var(--paper); font-size:.95rem; animation:fi .6s var(--ease) both}
+.pills-l li:nth-child(n){animation-delay:calc(var(--k,0) * 1ms)}
+.cards2{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+.card2{background:var(--paper); border-radius:10px; overflow:hidden; display:grid; align-content:start}
+.card2 .card-ph{aspect-ratio:16/10; border-radius:0}
+.card2 .card-ph img{transition:transform 1.4s var(--ease)}
+.card2:hover .card-ph img{transform:scale(1.05)}
+.card2 .in{padding:22px; display:grid; gap:8px}
+.card2 .lat{font:italic 400 1.05rem var(--f-serif); color:var(--muted)}
+@media (max-width:720px){.cards2{grid-template-columns:1fr}}
+.checks,.checks-s{list-style:none; margin:0; padding:0; display:grid; gap:0}
+.checks{grid-template-columns:1fr 1fr; column-gap:28px; border-top:1px solid var(--line)}
+.checks li,.checks-s li{position:relative; padding:14px 0 14px 30px; border-bottom:1px solid var(--line)}
+.checks-s li{padding:6px 0 6px 24px; border:0; font-size:.93rem}
+.checks li::before,.checks-s li::before{content:""; position:absolute; left:2px; top:1.25em; width:12px; height:7px; border-left:1.5px solid var(--accent); border-bottom:1.5px solid var(--accent); transform:translateY(-60%) rotate(-45deg)}
+.checks-s li::before{top:.95em}
+@media (max-width:620px){.checks{grid-template-columns:1fr}}
+.hs-wrap{display:grid; gap:14px; min-width:0}
+.hs{display:grid; grid-auto-flow:column; grid-auto-columns:minmax(240px,32%); gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:8px; scrollbar-width:thin}
+.hs-card{scroll-snap-align:start; display:grid; gap:8px; align-content:start}
+.hs-card .hs-ph{aspect-ratio:3/4; border-radius:10px}
+.hs-card .hs-ph img{transition:transform 1.4s var(--ease)}
+.hs-card:hover .hs-ph img{transform:scale(1.06)}
+.hs-card h3{margin-top:6px; font-weight:400}
+.hs-nav{display:flex; gap:8px; justify-content:flex-end}
+.hs-btn{width:48px; height:48px; border-radius:50%; border:1px solid var(--line); background:transparent; color:var(--ink); font-size:1.1rem; cursor:pointer; transition:background .3s, color .3s}
+.hs-btn:hover{background:var(--ink-strong); color:var(--paper)}
+@media (max-width:620px){.hs{grid-auto-columns:78%}}
+.acc{border-top:1px solid var(--line)}
+.acc details{border-bottom:1px solid var(--line)}
+.acc summary{list-style:none; display:flex; justify-content:space-between; align-items:center; gap:16px; min-height:60px; cursor:pointer; font:400 clamp(1.1rem,1.6vw,1.35rem) var(--f); letter-spacing:-.015em; color:var(--ink-strong)}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary i{position:relative; width:14px; height:14px; flex:none}
+.acc summary i::before,.acc summary i::after{content:""; position:absolute; left:0; right:0; top:50%; height:1.5px; background:var(--accent); transition:transform .4s var(--ease)}
+.acc summary i::after{transform:rotate(90deg)}
+.acc details[open] summary i::after{transform:rotate(0)}
+.acc details p{padding:0 0 20px; max-width:60ch}
+.cta-in{display:flex; justify-content:space-between; align-items:end; gap:20px; flex-wrap:wrap; padding-top:10px}
+.story{position:relative; height:230vh}
+.story-in{position:sticky; top:0; height:100vh; height:100svh; margin:0 8px; border-radius:18px; display:grid; place-items:center; overflow:hidden}
+.story-in > img{top:0; height:100%}
+.story-text{position:relative; z-index:2; display:grid; justify-items:center; gap:26px; text-align:center; max-width:1000px; will-change:filter,opacity,transform}
+.story-text .label{color:rgba(255,255,255,.8)}
+.story .statement{color:#fff; max-width:30ch; margin-inline:auto; font-size:clamp(1.7rem,3.6vw,3.2rem)}
+.story .statement .ser{color:#fff}
+.story .story-fill .w{color:rgba(255,255,255,.28); transition:color .35s}
+.story .story-fill .w.on{color:#fff}
+.story .story-lead{color:rgba(255,255,255,.85); margin-inline:auto; font-size:clamp(1.05rem,1.5vw,1.3rem)}
+.hero.shade::after,.next.shade::after{background:linear-gradient(180deg,rgba(10,12,16,.4) 0%,rgba(10,12,16,.08) 26%,rgba(10,12,16,.3) 52%,rgba(10,12,16,.84) 100%),linear-gradient(90deg,rgba(10,12,16,.35) 0%,rgba(10,12,16,0) 60%)}
+.hero .lead,.hero .sub{text-shadow:0 1px 18px rgba(0,0,0,.35)}
+.story .shade::after{background:linear-gradient(180deg,rgba(15,20,30,.35),rgba(15,20,30,.45))}
+.xp-row{display:flex; gap:8px; height:clamp(460px,70vh,680px)}
+.xp{position:relative; flex:1 1 0; min-width:0; border-radius:14px; overflow:hidden; cursor:pointer; background:var(--ph-bg); transition:flex-grow .9s var(--ease); outline-offset:3px}
+.xp.on{flex-grow:2.6}
+.xp img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transform:scale(1.08); filter:saturate(.7) brightness(.85); transition:transform 1.4s var(--ease), filter .8s}
+.xp.on img{transform:scale(1); filter:none}
+.xp::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(12,16,24,.05) 30%,rgba(12,16,24,.78) 100%)}
+.xp-in{position:absolute; left:0; right:0; bottom:0; z-index:2; padding:clamp(18px,2.4vw,32px); color:#fff; display:grid; gap:10px}
+.xp-no{font:400 .8rem var(--f-mono); color:rgba(255,255,255,.7)}
+.xp h3{color:#fff; font-weight:300; font-size:clamp(1.3rem,2.2vw,2rem)}
+.xp-body{display:grid; grid-template-rows:0fr; opacity:0; transition:grid-template-rows .8s var(--ease), opacity .6s}
+.xp-body > *{overflow:hidden}
+.xp.on .xp-body{grid-template-rows:1fr; opacity:1; transition-delay:.15s}
+.xp-body p{color:rgba(255,255,255,.88); max-width:48ch; font-size:.98rem}
+.xp-body ul{display:flex; flex-wrap:wrap; gap:6px; list-style:none; margin:12px 0 0; padding:0}
+.xp-go{margin-top:18px; justify-self:start}
+.xp h3{white-space:nowrap}
+.xp:not(.on) h3{writing-mode:vertical-rl; transform:rotate(180deg); font-size:clamp(1.3rem,2vw,1.8rem)}
+.xp:not(.on) .xp-no{opacity:0; transition:opacity .4s}
+.xp .xp-no{transition:opacity .6s .2s}
+.xp-body li{padding:5px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.35); font:500 .68rem var(--f); letter-spacing:.1em; text-transform:uppercase}
+@media (max-width:820px){ .xp-row{flex-direction:column; height:auto} .xp{flex:none; min-height:380px} .xp h3{white-space:normal} .xp:not(.on) .xp-no{opacity:1} .xp:not(.on) h3{writing-mode:horizontal-tb; transform:none} .xp .xp-body{grid-template-rows:1fr; opacity:1} .xp img{transform:none; filter:none} }
+.pillars{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(12px,2vw,24px)}
+.pl{position:relative; display:grid; gap:14px; align-content:start; padding:clamp(22px,2.4vw,34px) clamp(18px,2vw,28px) clamp(26px,3vw,40px); border-radius:14px; background:var(--paper); transition:transform .7s var(--ease), box-shadow .7s var(--ease)}
+.pl::before{content:""; position:absolute; left:clamp(18px,2vw,28px); right:clamp(18px,2vw,28px); top:0; height:2px; background:var(--accent); transform:scaleX(0); transform-origin:left; transition:transform 1.2s var(--ease) .2s}
+.pl:not(.pre)::before{transform:scaleX(1)}
+.pl:hover{transform:translateY(-6px); box-shadow:0 24px 48px -28px rgba(0,0,0,.35)}
+.pl-ic{width:clamp(44px,4vw,56px); height:auto; color:var(--accent)}
+.pl-ic *{stroke-dasharray:160; stroke-dashoffset:0; transition:stroke-dashoffset 1.8s var(--ease) .3s}
+.pl.pre .pl-ic *{stroke-dashoffset:160}
+.pl b{font:300 clamp(1.9rem,3.2vw,3rem)/1 var(--f); letter-spacing:-.04em; color:var(--ink-strong)}
+.pl > span{color:var(--muted); font-size:1rem; line-height:1.45}
+@media (max-width:960px){.pillars{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.pillars{grid-template-columns:1fr}}
+.big-line{font:300 clamp(2rem,4.8vw,4.6rem)/1.12 var(--f); letter-spacing:-.04em; color:var(--ink-strong); max-width:27ch; margin:22px 0 0; text-wrap:pretty}
+.ipill{display:inline-block; vertical-align:-.08em; width:1.7em; height:.82em; border-radius:999px; overflow:hidden; margin:0 .08em; background:var(--ph-bg); transform:scale(.55); opacity:.3; filter:grayscale(1); transform-origin:center; transition:transform .8s var(--ease), opacity .6s, filter .8s, width .7s var(--ease)}
+.ipill.on{transform:scale(1); opacity:1; filter:none}
+.ipill:hover{width:2.6em}
+.ipill img{width:100%; height:100%; object-fit:cover; display:block}
+@media (prefers-reduced-motion:reduce){.ipill{transform:none}}
+.cform-wrap{display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); gap:clamp(28px,5vw,80px); align-items:start}
+@media (max-width:900px){.cform-wrap{grid-template-columns:1fr}}
+.cform{display:grid; gap:18px; background:var(--paper); border-radius:18px; padding:clamp(22px,3vw,40px)}
+.f2{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+@media (max-width:620px){.f2{grid-template-columns:1fr}}
+.fld{display:grid; gap:8px; min-width:0; border:0; margin:0; padding:0}
+.fld > span, .fld legend{font:500 .72rem var(--f); letter-spacing:.12em; text-transform:uppercase; color:var(--muted); padding:0}
+.fld input:not([type=radio]),.fld textarea{width:100%; min-height:48px; padding:12px 14px; border-radius:10px; border:1px solid var(--line); background:var(--bg); color:var(--ink-strong); font:400 1rem var(--f); transition:border-color .3s, box-shadow .3s}
+.fld textarea{resize:vertical; min-height:130px}
+.fld input:not([type=radio]):focus,.fld textarea:focus{outline:none; border-color:var(--accent); box-shadow:0 0 0 3px color-mix(in oklab,var(--accent) 25%,transparent)}
+.fld input::placeholder{color:var(--muted); opacity:.7}
+.fld.bad input,.fld.bad textarea{border-color:#B5543F}
+.chipsel > div{display:flex; flex-wrap:wrap; gap:8px; margin-top:8px}
+.chipsel label{position:relative}
+.chipsel input{position:absolute; opacity:0; inset:0; width:100%; height:100%; margin:0; cursor:pointer}
+.chipsel label > span{display:flex; align-items:center; min-height:44px; padding:0 16px; border-radius:10px; border:1px solid var(--line); background:var(--bg); font-size:.93rem; transition:background .3s, color .3s, border-color .3s}
+.chipsel input:checked + span{background:var(--ink-strong); color:var(--paper); border-color:var(--ink-strong)}
+.chipsel input:focus-visible + span{outline:2px solid var(--accent); outline-offset:2px}
+.chipsel.bad label > span{border-color:#B5543F}
+.consent{display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start; font-size:.9rem; color:var(--muted); cursor:pointer; min-height:44px}
+.consent input{width:20px; height:20px; margin-top:2px; accent-color:var(--accent)}
+.consent.bad{color:#B5543F}
+.f-actions{display:flex; flex-wrap:wrap; gap:16px; align-items:center}
+.f-actions .btn{border:0; cursor:pointer}
+.f-status{font-size:.92rem; color:var(--muted)}
+.f-status.ok{color:var(--accent)}
+.cinfo{display:grid; gap:8px; align-content:start; position:sticky; top:110px}
+.cinfo .copy code{font-size:clamp(1.4rem,2.6vw,2.2rem)}
+.big-c{font:300 clamp(1.4rem,2.6vw,2.2rem)/1.1 var(--f); letter-spacing:-.03em; color:var(--ink-strong)}
+@media (max-width:900px){.cinfo{position:static}}
+.logo .logo-svg{height:46px; width:auto; display:block; color:var(--ink-strong)}
+@media (max-width:520px){.logo .logo-svg{height:38px}}
+.hint-hover{}
+@media (hover:none){.hint-hover{display:none}}
+@media (max-width:400px){.logo .logo-svg{height:32px} .bar{gap:6px} .ldd-btn{padding:0 6px; gap:4px} .menu-btn{padding:0 10px; letter-spacing:.06em} .theme-btn{min-width:44px; padding:0}}
+.need,.need-abs{display:grid; place-content:center; gap:6px; text-align:center; padding:16px; background:repeating-linear-gradient(135deg,var(--ph-bg) 0 14px,color-mix(in oklab,var(--ph-bg) 80%,var(--bg)) 14px 28px); border:1.5px dashed var(--accent); color:var(--ink-strong)}
+.ph > .need{position:absolute; inset:0; border-radius:inherit}
+.need span{font:500 .66rem var(--f); letter-spacing:.16em; color:var(--accent)}
+.need b{font:400 clamp(.95rem,1.4vw,1.15rem)/1.3 var(--f)}
+.need-abs{position:absolute; inset:0; opacity:0; transition:opacity .8s var(--ease)}
+.need-abs.on{opacity:1}
+.hv-media .need-abs,.st-frame .need-abs{border-radius:10px}
+.mosaic{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); grid-auto-rows:clamp(170px,19vw,260px); gap:10px}
+.mo{margin:0; position:relative; border-radius:12px; overflow:hidden}
+.mo:first-child{grid-row:span 2}
+.mo .mo-ph{position:absolute; inset:0; border-radius:0}
+.mo .mo-ph img{transition:transform 1.4s var(--ease)}
+.mo:hover .mo-ph img{transform:scale(1.06)}
+.mo figcaption{position:absolute; left:10px; bottom:10px; z-index:3; padding:5px 10px; border-radius:999px; background:rgba(12,14,18,.55); color:#fff; font:500 .7rem var(--f); letter-spacing:.08em; text-transform:uppercase; backdrop-filter:blur(6px)}
+@media (max-width:720px){.mosaic{grid-template-columns:1fr 1fr} .mo:first-child{grid-column:1 / -1; grid-row:auto}}
+.legal-body{max-width:820px; display:grid; gap:14px; margin-top:44px}
+.legal-body h2{font-size:clamp(1.4rem,2.4vw,2rem); margin-top:26px}
+.legal-body p{color:var(--ink); max-width:70ch}
+.ldl{display:grid; margin:0; border-top:1px solid var(--line)}
+.lrow{display:grid; grid-template-columns:minmax(0,220px) minmax(0,1fr); gap:16px; padding:14px 0; border-bottom:1px solid var(--line)}
+.lrow dt{color:var(--muted); font-size:.92rem}
+.lrow dd{margin:0; color:var(--ink-strong)}
+@media (max-width:560px){.lrow{grid-template-columns:1fr; gap:4px}}
+.consent a{color:var(--accent); text-underline-offset:3px; display:inline-block; padding-block:12px; margin-block:-12px}
+/* footer */
+:root{--foot:var(--paper); --foot-fg:var(--ink-strong); --foot-muted:var(--muted); --foot-line:var(--line)}
+footer.site{position:relative; margin:clamp(40px,6vw,90px) 8px 8px; border-radius:18px; overflow:hidden; color:var(--foot-fg); background:var(--foot)}
+.foot-land{position:relative; height:clamp(150px,20vw,300px); overflow:hidden; margin-top:-2px}
+.foot-land img{position:absolute; left:0; top:0; width:100%; height:auto; min-height:170%; object-fit:cover; object-position:center top; filter:sepia(.75) saturate(.8) brightness(1.04); opacity:.5}
+:root[data-theme="dark"] .foot-land img{filter:sepia(.75) saturate(.7) brightness(.6); opacity:.5}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .foot-land img{filter:sepia(.75) saturate(.7) brightness(.6); opacity:.5}}
+.foot-body{padding-top:clamp(40px,5vw,72px)}
+.foot-top{display:flex; justify-content:space-between; align-items:end; gap:28px; flex-wrap:wrap; padding-bottom:clamp(36px,5vw,64px); border-bottom:1px solid var(--foot-line)}
+.foot-logo{display:block; color:var(--ink-strong); min-height:44px}
+.foot-logo .logo-svg{height:clamp(84px,11vw,150px); width:auto; display:block}
+.foot-cta{display:grid; gap:18px; justify-items:start; max-width:460px}
+.foot-claim{font:300 clamp(1.3rem,2.2vw,1.9rem)/1.2 var(--f); letter-spacing:-.02em; color:var(--foot-fg)}
+.foot-btn{}
+
+.foot-cols{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(24px,4vw,64px); padding-block:clamp(36px,5vw,64px)}
+.foot-cols h4{margin:0 0 14px; font:500 .7rem var(--f); letter-spacing:.16em; text-transform:uppercase; color:var(--foot-muted)}
+.foot-cols ul{list-style:none; margin:0; padding:0; display:grid; gap:2px}
+.foot-cols a{display:inline-flex; align-items:center; min-height:44px; text-decoration:none; font-size:1.02rem; color:var(--foot-fg); background:linear-gradient(currentColor,currentColor) 0 calc(100% - 10px)/0 1px no-repeat; transition:background-size .5s var(--ease)}
+.foot-cols a:hover{background-size:100% 1px}
+.foot-contact li{display:grid; gap:2px; padding:8px 0}
+.foot-contact .fk{font-size:.8rem; color:var(--foot-muted)}
+.foot-contact .fv{font-size:1.02rem; user-select:all}
+.foot-bottom{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px 24px; padding-block:18px 8px; border-top:1px solid var(--foot-line); color:var(--foot-muted); font-size:.85rem}
+.foot-bottom nav{display:flex; flex-wrap:wrap; gap:0 6px}
+.foot-bottom nav a{display:inline-flex; align-items:center; min-height:44px; padding:0 8px; color:var(--foot-muted); text-decoration:none}
+.foot-bottom nav a:hover{color:var(--foot-fg)}
+.foot-top-btn{min-height:44px; padding:0 16px; border-radius:10px; border:1px solid var(--foot-line); background:transparent; color:var(--foot-fg); font:500 .72rem var(--f); letter-spacing:.12em; text-transform:uppercase; cursor:pointer}
+.foot-top-btn:hover{background:var(--foot-line)}
+@media (max-width:860px){.foot-cols{grid-template-columns:1fr 1fr} .foot-cols > div:first-child{grid-column:1 / -1}}
+@media (max-width:520px){.foot-cols{grid-template-columns:1fr}}
+/* contact */
+.ct-hero{position:relative; min-height:100svh; margin:8px; border-radius:18px; overflow:hidden; display:grid; align-items:center}
+.ct-bg{position:absolute; inset:0}
+.ct-bg img{width:100%; height:100%; object-fit:cover; transform:scale(1.08); animation:ctz 18s ease-out forwards}
+@keyframes ctz{to{transform:scale(1)}}
+.ct-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(248,246,240,.72) 0%,rgba(248,246,240,.35) 45%,rgba(248,246,240,.05) 100%)}
+:root[data-theme="dark"] .ct-bg::after{background:linear-gradient(90deg,rgba(8,14,26,.86),rgba(8,14,26,.55) 50%,rgba(8,14,26,.3))}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .ct-bg::after{background:linear-gradient(90deg,rgba(8,14,26,.86),rgba(8,14,26,.55) 50%,rgba(8,14,26,.3))}}
+.ct-grid{position:relative; z-index:2; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(28px,5vw,80px); align-items:center; padding-block:130px 60px}
+.ct-left{display:grid; gap:24px; align-content:center}
+.ct-title{font-size:clamp(3rem,8vw,7.4rem); line-height:.95}
+.ct-title .ln{display:block; overflow:hidden; padding-bottom:.08em}
+.ct-title .ln > span{display:inline-block; animation:up 1.4s var(--ease) both}
+.ct-title .ln:nth-child(2) > span{animation-delay:.15s; color:var(--accent)}
+.ct-lead{font:300 clamp(1.05rem,1.4vw,1.25rem)/1.5 var(--f); color:var(--ink); max-width:44ch}
+.ct-cards{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+.ct-card{display:grid; gap:6px; align-content:start; padding:18px; border-radius:14px; background:color-mix(in oklab,var(--paper) 70%,transparent); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border:1px solid color-mix(in oklab,var(--paper) 60%,transparent)}
+.ct-card .k{font:500 .68rem var(--f); letter-spacing:.14em; text-transform:uppercase; color:var(--muted)}
+.ct-card code,.ct-card b{font:400 clamp(1.05rem,1.5vw,1.3rem) var(--f); letter-spacing:-.02em; color:var(--ink-strong); user-select:all; word-break:break-all}
+.ct-card button{justify-self:start; min-height:44px; padding:0 14px; border-radius:10px; border:1px solid var(--line); background:transparent; color:var(--ink); font:500 .7rem var(--f); letter-spacing:.12em; text-transform:uppercase; cursor:pointer}
+.clock{font-size:.85rem; color:var(--muted); display:flex; align-items:center; gap:8px}
+.clock::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 0 var(--accent); animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 8px transparent}}
+.ct-steps{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px}
+.ct-steps li{display:grid; gap:6px; padding-top:12px; border-top:1px solid var(--line)}
+.ct-steps b{font:400 .78rem var(--f-mono); color:var(--accent)}
+.ct-steps span{font-size:.92rem; color:var(--ink)}
+.glass-form{background:color-mix(in oklab,var(--paper) 78%,transparent); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border:1px solid color-mix(in oklab,var(--paper) 60%,transparent); box-shadow:0 40px 80px -40px rgba(0,0,0,.45); animation:fi 1.3s .35s var(--ease) both}
+.ct-divs{padding-block:clamp(60px,8vw,110px)}
+.ct-dgrid{display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; margin-top:22px}
+.ct-d{position:relative; display:grid; align-content:end; gap:4px; min-height:260px; padding:18px; border-radius:14px; overflow:hidden; text-decoration:none; color:#fff; isolation:isolate}
+.ct-d img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-2; transition:transform 1.2s var(--ease)}
+.ct-d::before{content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg,rgba(10,12,16,0) 30%,rgba(10,12,16,.8))}
+.ct-d:hover img{transform:scale(1.07)}
+.ct-dn{font:400 .72rem var(--f-mono); opacity:.75}
+.ct-d b{font:400 1.25rem var(--f); letter-spacing:-.02em}
+.ct-d em{font-style:normal; font-size:.8rem; opacity:.75}
+.ct-d i{font-style:normal; font-size:.82rem; margin-top:8px; opacity:0; transform:translateY(6px); transition:opacity .5s, transform .5s var(--ease)}
+.ct-d:hover i,.ct-d:focus-visible i{opacity:1; transform:none}
+@media (max-width:1000px){.ct-grid{grid-template-columns:1fr} .ct-dgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:620px){.ct-cards,.ct-steps{grid-template-columns:1fr} .ct-dgrid{grid-template-columns:1fr 1fr} .ct-d{min-height:190px} .ct-d i{opacity:1; transform:none}}
+@media (hover:none){.ct-d i{opacity:1; transform:none}}
+.cfree{display:inline-flex; align-items:center; gap:10px; min-height:44px; color:var(--foot-muted); text-decoration:none; font-size:.85rem}
+.cfree:hover{color:var(--foot-fg)}
+.cfree .eu{width:30px; height:20px; flex:none; border-radius:3px; box-shadow:0 0 0 1px var(--foot-line)}
+.cfree .lk{width:15px; height:15px; flex:none}
+@media (min-width:2200px){html{font-size:18px}}
+@media (min-width:3000px){html{font-size:20px}}
+.hero h1 .ser{font-size:1.08em; letter-spacing:-.01em}
+.marquee .track{gap:clamp(22px,3vw,44px); align-items:center}
+.mq-item{display:inline-flex; align-items:center; gap:.45em; font:300 clamp(2rem,4.4vw,3.8rem)/1 var(--f); letter-spacing:-.035em; color:var(--ink-strong); white-space:nowrap; transition:color .4s}
+.mq-item.it .mq-t{font-family:var(--f-serif); font-style:italic; font-weight:400; letter-spacing:-.01em; color:var(--accent)}
+.mq-ph{display:inline-block; width:1.5em; height:1em; border-radius:999px; overflow:hidden; background:var(--ph-bg); transition:width .6s var(--ease)}
+.mq-ph img{width:100%; height:100%; object-fit:cover; display:block; filter:saturate(.8)}
+.mq-item:hover .mq-ph{width:2.4em}
+.mq-sep{font-size:clamp(.9rem,1.4vw,1.2rem); color:var(--accent); opacity:.7}
+.marquee{border-block:1px solid var(--line); padding-block:clamp(18px,2.6vw,30px); margin-top:clamp(28px,4vw,64px)}
+/* reveal */
+.rv{transition:opacity 1.2s var(--ease), transform 1.2s var(--ease)}
+.rv.pre{opacity:0; transform:translateY(30px)}
+.clip{transition:clip-path 1.5s var(--ease)}
+.clip.pre{clip-path:inset(10% 0 10% 0)}
+@media (prefers-reduced-motion:reduce){ .rv.pre,.clip.pre{opacity:1; transform:none; clip-path:none} .marquee .track,.hero h1 .ln > span,.fade-in{animation:none} *{transition-duration:.01ms !important} }
+</style>
+
+<div class="progress" id="progress"></div>
+<header class="site" id="hdr">
+  <div class="bar pad">
+    <a class="logo" href="#home" aria-label="Lanartis Group"><svg class="logo-svg" role="img" aria-label="Lanartis" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.1416 50.49272"> <g> <g> <g> <path d="M10.87283,25.13641c-.14414-.04002-.10158.03871-.13634.07795-.13349.15071-.26023.30058-.40785.43845-2.91444,2.722-6.15318,5.17466-9.68416,7.0508-.56629.13119-.84977-.52334-.47351-.89871.27908-.27842.93434-.76735,1.26367-1.00857.04996-.03659.12994-.03705.19111-.08122,3.35816-2.4247,7.0713-4.40469,9.76127-7.64179,1.39669-5.89072,2.97614-11.77807,5.0169-17.47724.48444-1.35289,1.51503-4.18924,2.44102-5.1985,1.04131-1.13495,1.48074.43188,1.60187,1.31061.42188,3.06049-.43754,6.7672-1.42015,9.66345-1.25773,3.7072-3.0682,7.24051-5.34838,10.41571-1.40985,6.06718-3.01584,12.11997-3.89014,18.30084-.3152,2.22826-.74726,5.56492-.29291,7.73761.19455.93033.50938.92078,1.31078.556.61631-.28053,1.22412-.67867,1.86762-.98204,3.40166-1.60372,7.78176-3.03696,11.51438-3.58276,4.08982-.59803,8.4369-.75815,12.54478-.43146.65689.05224,1.46432.10654,2.10575.19824.30211.04319.51661.17741.5346.49693.03377.59977-.40424.54354-.88548.52089-.68702-.03233-1.4142-.141-2.11995-.18404-3.20116-.19523-6.11531.10985-9.26948.61199-4.13497.65829-8.36346,1.87501-12.22299,3.48046-1.38695.57693-2.86117,1.42998-4.2913,1.83244-2.3814.67016-2.87636-1.00372-3.10046-2.99077-.33761-2.99352.22981-6.71038.7282-9.68879.70462-4.21088,1.72306-8.36723,2.66115-12.5265ZM19.36073,1.55078c-.13543-.02248-.09631.00198-.13395.07708-.14387.28702-.29885.78162-.41348,1.10271-1.17334,3.28673-2.27054,6.77808-3.19408,10.14476-.55458,2.02168-1.07014,4.06753-1.41103,6.13711.21837-.22733.40025-.52659.5709-.79286,2.63208-4.1069,4.39514-10.07876,4.64353-14.94032.01313-.25702.03375-1.61213-.06189-1.72848Z" fill="currentColor"/> <path d="M98.04536,13.69212c.03629.03639.13197.26515.13591.32135.03223.45934-.73234,1.48453-.9805,1.92617-.95856,1.70593-1.82431,3.48755-2.53538,5.31591l3.97316-.24379c.60106.06361.52869.67681-.006.78573-.67444.13738-1.54129.08145-2.23995.12466l-1.94015.12131-.14558.09695c-.98791,2.49778-1.91892,5.02286-2.71747,7.58981-1.14682,3.68646-2.0462,7.47011-2.72951,11.27627-.1895,1.05554-.25664,2.36242-.51441,3.36581-.01467.05709-.10456.27984-.14564.28987-.23342.03199-.43729-.03319-.50669-.27613-.00268-.87256.0961-1.73602.18761-2.60037.49904-3.39436,1.38601-6.70965,2.17648-10.04025-.97815.26641-1.91126.54759-2.94347.48747-1.91849-.11174-4.17514-1.5236-5.5175-2.84882-.60993-.60215-1.12419-1.35586-1.78443-1.91483-.12291-.10406-.49796-.39529-.63942-.39284-.17572.0395-.26191.23163-.35737.36864-.45128.64773-.87491,1.49445-1.25875,2.19722-1.02455,1.87585-2.00247,3.80596-2.9526,5.71764-.20251.40746-.38317,1.22025-.88937,1.29347-.71507.10343-.94647-.5201-.99781-1.11871-.07097-.82746.0176-1.7565.12107-2.57706-1.51558,1.50801-3.18749,2.96041-5.27416,3.60785-3.01322.93492-4.26031-1.01544-4.48763-3.7588-.01928-.23263.05066-.65565-.00786-.8409-.02089-.06614-.06987-.10235-.14081-.10083-.2619.00561-1.61931,1.00151-1.92775,1.21592-.92385.64221-2.2618,1.7754-3.36549,2.04344-1.22737.29808-1.07862-.63094-.70581-1.43341.06752-.21892.38194-.53655.44855-.70366.03048-.07646-.01233-.11278-.0899-.0899-1.21194.94654-2.48975,1.81734-3.79469,2.63242-1.68515,1.05257-4.2243,2.5555-6.16433,2.93033-1.10762.214-2.73503.23454-2.9824-1.17123-.20468-1.16315-.00749-2.63553.19594-3.79796.30285-1.7305.84983-3.40996,1.13384-5.14104-.10126-.10328-.41561.2579-.48404.33404-.87128.96932-1.69426,2.19034-2.54791,3.21204-1.07957,1.2921-2.44469,2.9977-3.7433,4.0304-.35622.28328-1.11061.83039-1.37983.1845-.29264-.70207.15738-2.12544.26873-2.88562.00928-.06332.04134-.16234-.05555-.14605-.15335.25354-.38954.49553-.60558.69822-1.28882,1.20919-2.94741,2.37852-4.66961,2.84864-2.71284.74055-3.99613-1.01923-4.23827-3.52303-.0397-.41054.02049-.82842-.06696-1.23701-.07865-.09633-.84074.38137-.96508.45983-1.07508.67835-3.6948,2.9291-4.88128,2.87274-1.05884-.05029-.24815-1.55687.02466-2.03004,1.14646-1.98839,4.87601-5.77874,7.41432-4.74399.1916.07811.40017.13937.41347.37905.03391.61082-.80992.17945-1.13759.1731-1.43718-.02785-3.68804,2.10506-4.56468,3.17751-.22578.27622-.53617.6672-.71816.96654-.11906.19583-.26573.45573-.25387.68547.0962.097.8141-.27822.95033-.3528,1.21163-.66339,2.44106-1.69954,3.67603-2.26582.61517-.28208,1.00403-.39076,1.23834.36148.12478.40058.08811.93952.14333,1.37245.2678,2.09978,1.07479,3.53515,3.4504,2.85561,1.82019-.52067,4.66922-2.92071,5.46761-4.65778.19254-.41891.47386-1.69456.89523-1.83368.44841-.14805.65784.26167.60529.66653-.05755.44339-.39548,1.22986-.52448,1.71877-.24846.94167-.66405,2.4376-.62333,3.3793.00399.0923-.02424.10251.09045.08972l1.24147-1.25759c.38937-.53638.84619-.99948,1.27447-1.50162,1.20774-1.41603,2.38979-3.06846,3.66773-4.39621.27774-.28857.93466-.93417,1.33576-.91386.46527.02357.47223.89986.45462,1.24929-.07572,1.50193-.61962,3.18672-.89336,4.68449-.20582,1.12614-.52307,2.79531-.36499,3.90904.17446,1.2291,1.64551.83574,2.48444.57502,2.89681-.90025,7.52015-4.01025,9.94578-5.92695.18585-.14685.48269-.54502.69313-.59313.09628-.02201.25905.01183.3108-.02276.01064-.00711.07238-.14337.12928-.20299,1.19606-1.2531,3.59094-2.92311,5.39837-2.36246.22289.06914.71034.3408.48972.60967-.23518.28661-.68671.04622-1.00208.02398-.14258-.01006-.34692-.01116-.48799.0023-1.35644.12944-3.7307,2.50333-4.54172,3.5829-.27744.36931-.56294.73745-.64178,1.20703.12615.11959.90769-.32218,1.07182-.4132,1.11171-.61648,2.79057-2.00555,3.91159-2.33346.35187-.10293.55148-.17315.7776.16885.28966.4381.24508,1.80144.3764,2.41265,1.07274,4.99326,6.46968.69785,8.17008-1.50321.58978-.76343.604-1.15065.89433-2.01596.58269-1.73674,1.3727-4.01585,2.30963-5.57242.16751-.27829.39877-.73601.7988-.53436.56267.28364-.04441,1.03282-.21072,1.42559-.82863,1.95683-1.57151,4.29639-2.13745,6.3509-.20164.73203-.48952,1.73563-.55552,2.47574-.02814.31556-.01001.87647.39836.48951.63491-.60162,1.60582-2.71027,2.03233-3.57596.6647-1.34914,1.40892-3.37545,2.32551-4.5258.95054-1.19296,2.15455-.09497,2.94023.69261,2.53619,2.54234,4.00136,5.41246,8.24272,3.82092.138-.05178.54708-.2134.59448-.31499.64757-2.57097,1.39386-5.1218,2.2543-7.62856.05578-.1625.43352-1.05107.36486-1.12017-.15952-.03166-.30631.05189-.45394.06099-3.17254.19575-6.34376.2208-9.52025.42325-.60931.03883-2.1245.29887-2.62599.14131-.25608-.08046-.2363-.22349-.03343-.37549.36905-.27651,1.17922-.2128,1.62984-.24972,3.51177-.28771,7.03816-.50226,10.54867-.72871.28416-.01833.72747.11133.86648-.16425.54596-1.50258,1.08896-3.0186,1.78782-4.45718.43366-.89267,1.33804-2.66961,2.23285-3.10266.21717-.1051.52202-.14538.70662.03974Z" fill="currentColor"/> <path d="M106.3434,28.14548c-.15094.18618-.36649.44081-.43339.68687-.15418.56704.22904,1.03879.7897,1.09446,1.47363.14634,2.91431-.21994,4.36683-.12265.49894.03342,1.13054.13452,1.45116.54966.61086.79096.1106,1.94929-.25824,2.76659-.35133.7785-.84261,1.53257-1.28448,2.262l.73039-.33022c3.25078-1.82314,6.68886-3.2693,9.99884-4.97661l.36992-.00142c.09236.10248.08883.27285-.00405.36706-.11344.11505-.63346.42276-.80736.52632-1.42108.84625-3.04642,1.50648-4.52158,2.2691-1.7796.92001-3.64552,1.92775-5.38283,2.92363-1.07737.61758-2.10973,1.31027-3.11359,2.04033-.14039.11036-.53432-.07753-.6077-.19141-.36253-.56268.31708-.98891.64225-1.35286,1.13644-1.27196,2.69928-2.83909,3.49487-4.32441.27134-.50658.76987-1.44518.02382-1.74361-.76255-.30503-2.15414-.0387-2.97479.00526-1.07144.0574-3.02516.13632-3.95411-.41252-1.68534-.99574.48717-3.02426,1.41712-3.70087,1.10611-.80477,3.3887-1.88347,4.75273-1.43825.27671.09032.46302.49523.3297.76111-.1665.33205-.47701.30744-.78847.30358-1.60622-.01989-3.21801.78229-4.23673,2.03885Z" fill="currentColor"/> <path d="M97.31653,28.91243c.43811.32406-.21284,1.06045-.37894,1.37611-.59104,1.12319-1.40354,3.32999.1716,4.01452,1.74784.75958,5.18124-.34503,6.89281-1.07302,1.277-.54316,2.53995-1.25894,3.55786-2.20665.16174-.04724.30326.14985.2542.31626-.00704.02387-.27928.3528-.31453.38587-.81503.7645-2.31547,1.60598-3.33421,2.09226-2.06618.98627-6.06603,2.31903-8.20943,1.21417-.06935-.03575-.53364-.37627-.56546-.41965-.24528-.33442-.39187-1.39124-.36183-1.80668.06595-.91225.96712-2.9467,1.5778-3.63647.164-.18524.44965-.44939.71013-.25671Z" fill="currentColor"/> <path d="M98.46818,25.87268c.508-.09874.62782.78197.46606,1.13795-.15391.3387-1.10656,1.20073-1.48399.94855-.20482-.13685.08046-.91161.17411-1.10678.1223-.25485.56732-.92598.84382-.97972Z" fill="currentColor"/> </g> </g> <g> <path d="M49.73506,45.05767h1.07227v3.0498c-.78174.6582-1.86523.99414-2.95996.99414-2.40137,0-4.16602-1.6875-4.16602-3.99902,0-2.3125,1.76465-3.99902,4.18848-3.99902,1.23975,0,2.29004.41309,3.00488,1.20703l-.69287.69238c-.64795-.62598-1.38477-.90527-2.26709-.90527-1.80957,0-3.11621,1.2627-3.11621,3.00488,0,1.71973,1.30664,3.00488,3.10498,3.00488.65869,0,1.27295-.14551,1.83154-.50293v-2.54688Z" fill="currentColor"/> <path d="M58.16524,49.01177l-1.68652-2.40137c-.15625.01074-.32373.02246-.49121.02246h-1.93262v2.37891h-1.1167v-7.81836h3.04932c2.03271,0,3.26123,1.02734,3.26123,2.72461,0,1.20703-.62549,2.07812-1.71973,2.46875l1.854,2.625h-1.21777ZM58.13204,43.91802c0-1.11621-.74854-1.75293-2.17822-1.75293h-1.89893v3.51855h1.89893c1.42969,0,2.17822-.64844,2.17822-1.76562Z" fill="currentColor"/> <path d="M60.41915,45.10259c0-2.29004,1.76465-3.99902,4.16602-3.99902,2.37939,0,4.14404,1.69824,4.14404,3.99902s-1.76465,3.99902-4.14404,3.99902c-2.40137,0-4.16602-1.70898-4.16602-3.99902ZM67.61202,45.10259c0-1.73145-1.29541-3.00488-3.02686-3.00488-1.75342,0-3.04932,1.27344-3.04932,3.00488s1.2959,3.00488,3.04932,3.00488c1.73145,0,3.02686-1.27344,3.02686-3.00488Z" fill="currentColor"/> <path d="M70.36837,45.63872v-4.44531h1.1167v4.40039c0,1.73145.79297,2.51367,2.2002,2.51367,1.40771,0,2.21191-.78223,2.21191-2.51367v-4.40039h1.0835v4.44531c0,2.26758-1.23975,3.46289-3.30615,3.46289-2.05518,0-3.30615-1.19531-3.30615-3.46289Z" fill="currentColor"/> <path d="M85.57833,43.91802c0,1.69824-1.22852,2.72559-3.26123,2.72559h-1.93262v2.36816h-1.1167v-7.81836h3.04932c2.03271,0,3.26123,1.02734,3.26123,2.72461ZM84.46163,43.91802c0-1.11621-.74854-1.75293-2.17822-1.75293h-1.89893v3.50684h1.89893c1.42969,0,2.17822-.63672,2.17822-1.75391Z" fill="currentColor"/> </g> </g> </svg></a>
+    <nav class="main" id="nav-main" aria-label="Fő navigáció"></nav>
+    <div class="hdr-tools">
+      <div class="ldd"><button type="button" class="ldd-btn" id="ldd-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Nyelv / Language"><span id="ldd-cur">HU</span><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 3l4 4 4-4"/></svg></button><ul class="ldd-list" id="ldd-list" role="listbox" hidden></ul></div>
+      <button type="button" class="theme-btn" id="theme-btn" aria-label="Világos / sötét mód"><svg class="i-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg><svg class="i-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+    </div>
+    <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="mobile-nav"><span class="hu">Menü</span><span class="en">Menu</span></button>
+  </div>
+  <nav class="mobile-nav pad" id="mobile-nav" hidden aria-label="Mobil navigáció"></nav>
+</header>
+
+<main id="app"></main>
+
+<footer class="site">
+  
+  <div class="foot-body">
+    <div class="foot-top pad">
+      <a href="#home" class="foot-logo" aria-label="Lanartis Group"><svg class="logo-svg" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.1416 50.49272"> <g> <g> <g> <path d="M10.87283,25.13641c-.14414-.04002-.10158.03871-.13634.07795-.13349.15071-.26023.30058-.40785.43845-2.91444,2.722-6.15318,5.17466-9.68416,7.0508-.56629.13119-.84977-.52334-.47351-.89871.27908-.27842.93434-.76735,1.26367-1.00857.04996-.03659.12994-.03705.19111-.08122,3.35816-2.4247,7.0713-4.40469,9.76127-7.64179,1.39669-5.89072,2.97614-11.77807,5.0169-17.47724.48444-1.35289,1.51503-4.18924,2.44102-5.1985,1.04131-1.13495,1.48074.43188,1.60187,1.31061.42188,3.06049-.43754,6.7672-1.42015,9.66345-1.25773,3.7072-3.0682,7.24051-5.34838,10.41571-1.40985,6.06718-3.01584,12.11997-3.89014,18.30084-.3152,2.22826-.74726,5.56492-.29291,7.73761.19455.93033.50938.92078,1.31078.556.61631-.28053,1.22412-.67867,1.86762-.98204,3.40166-1.60372,7.78176-3.03696,11.51438-3.58276,4.08982-.59803,8.4369-.75815,12.54478-.43146.65689.05224,1.46432.10654,2.10575.19824.30211.04319.51661.17741.5346.49693.03377.59977-.40424.54354-.88548.52089-.68702-.03233-1.4142-.141-2.11995-.18404-3.20116-.19523-6.11531.10985-9.26948.61199-4.13497.65829-8.36346,1.87501-12.22299,3.48046-1.38695.57693-2.86117,1.42998-4.2913,1.83244-2.3814.67016-2.87636-1.00372-3.10046-2.99077-.33761-2.99352.22981-6.71038.7282-9.68879.70462-4.21088,1.72306-8.36723,2.66115-12.5265ZM19.36073,1.55078c-.13543-.02248-.09631.00198-.13395.07708-.14387.28702-.29885.78162-.41348,1.10271-1.17334,3.28673-2.27054,6.77808-3.19408,10.14476-.55458,2.02168-1.07014,4.06753-1.41103,6.13711.21837-.22733.40025-.52659.5709-.79286,2.63208-4.1069,4.39514-10.07876,4.64353-14.94032.01313-.25702.03375-1.61213-.06189-1.72848Z" fill="currentColor"/> <path d="M98.04536,13.69212c.03629.03639.13197.26515.13591.32135.03223.45934-.73234,1.48453-.9805,1.92617-.95856,1.70593-1.82431,3.48755-2.53538,5.31591l3.97316-.24379c.60106.06361.52869.67681-.006.78573-.67444.13738-1.54129.08145-2.23995.12466l-1.94015.12131-.14558.09695c-.98791,2.49778-1.91892,5.02286-2.71747,7.58981-1.14682,3.68646-2.0462,7.47011-2.72951,11.27627-.1895,1.05554-.25664,2.36242-.51441,3.36581-.01467.05709-.10456.27984-.14564.28987-.23342.03199-.43729-.03319-.50669-.27613-.00268-.87256.0961-1.73602.18761-2.60037.49904-3.39436,1.38601-6.70965,2.17648-10.04025-.97815.26641-1.91126.54759-2.94347.48747-1.91849-.11174-4.17514-1.5236-5.5175-2.84882-.60993-.60215-1.12419-1.35586-1.78443-1.91483-.12291-.10406-.49796-.39529-.63942-.39284-.17572.0395-.26191.23163-.35737.36864-.45128.64773-.87491,1.49445-1.25875,2.19722-1.02455,1.87585-2.00247,3.80596-2.9526,5.71764-.20251.40746-.38317,1.22025-.88937,1.29347-.71507.10343-.94647-.5201-.99781-1.11871-.07097-.82746.0176-1.7565.12107-2.57706-1.51558,1.50801-3.18749,2.96041-5.27416,3.60785-3.01322.93492-4.26031-1.01544-4.48763-3.7588-.01928-.23263.05066-.65565-.00786-.8409-.02089-.06614-.06987-.10235-.14081-.10083-.2619.00561-1.61931,1.00151-1.92775,1.21592-.92385.64221-2.2618,1.7754-3.36549,2.04344-1.22737.29808-1.07862-.63094-.70581-1.43341.06752-.21892.38194-.53655.44855-.70366.03048-.07646-.01233-.11278-.0899-.0899-1.21194.94654-2.48975,1.81734-3.79469,2.63242-1.68515,1.05257-4.2243,2.5555-6.16433,2.93033-1.10762.214-2.73503.23454-2.9824-1.17123-.20468-1.16315-.00749-2.63553.19594-3.79796.30285-1.7305.84983-3.40996,1.13384-5.14104-.10126-.10328-.41561.2579-.48404.33404-.87128.96932-1.69426,2.19034-2.54791,3.21204-1.07957,1.2921-2.44469,2.9977-3.7433,4.0304-.35622.28328-1.11061.83039-1.37983.1845-.29264-.70207.15738-2.12544.26873-2.88562.00928-.06332.04134-.16234-.05555-.14605-.15335.25354-.38954.49553-.60558.69822-1.28882,1.20919-2.94741,2.37852-4.66961,2.84864-2.71284.74055-3.99613-1.01923-4.23827-3.52303-.0397-.41054.02049-.82842-.06696-1.23701-.07865-.09633-.84074.38137-.96508.45983-1.07508.67835-3.6948,2.9291-4.88128,2.87274-1.05884-.05029-.24815-1.55687.02466-2.03004,1.14646-1.98839,4.87601-5.77874,7.41432-4.74399.1916.07811.40017.13937.41347.37905.03391.61082-.80992.17945-1.13759.1731-1.43718-.02785-3.68804,2.10506-4.56468,3.17751-.22578.27622-.53617.6672-.71816.96654-.11906.19583-.26573.45573-.25387.68547.0962.097.8141-.27822.95033-.3528,1.21163-.66339,2.44106-1.69954,3.67603-2.26582.61517-.28208,1.00403-.39076,1.23834.36148.12478.40058.08811.93952.14333,1.37245.2678,2.09978,1.07479,3.53515,3.4504,2.85561,1.82019-.52067,4.66922-2.92071,5.46761-4.65778.19254-.41891.47386-1.69456.89523-1.83368.44841-.14805.65784.26167.60529.66653-.05755.44339-.39548,1.22986-.52448,1.71877-.24846.94167-.66405,2.4376-.62333,3.3793.00399.0923-.02424.10251.09045.08972l1.24147-1.25759c.38937-.53638.84619-.99948,1.27447-1.50162,1.20774-1.41603,2.38979-3.06846,3.66773-4.39621.27774-.28857.93466-.93417,1.33576-.91386.46527.02357.47223.89986.45462,1.24929-.07572,1.50193-.61962,3.18672-.89336,4.68449-.20582,1.12614-.52307,2.79531-.36499,3.90904.17446,1.2291,1.64551.83574,2.48444.57502,2.89681-.90025,7.52015-4.01025,9.94578-5.92695.18585-.14685.48269-.54502.69313-.59313.09628-.02201.25905.01183.3108-.02276.01064-.00711.07238-.14337.12928-.20299,1.19606-1.2531,3.59094-2.92311,5.39837-2.36246.22289.06914.71034.3408.48972.60967-.23518.28661-.68671.04622-1.00208.02398-.14258-.01006-.34692-.01116-.48799.0023-1.35644.12944-3.7307,2.50333-4.54172,3.5829-.27744.36931-.56294.73745-.64178,1.20703.12615.11959.90769-.32218,1.07182-.4132,1.11171-.61648,2.79057-2.00555,3.91159-2.33346.35187-.10293.55148-.17315.7776.16885.28966.4381.24508,1.80144.3764,2.41265,1.07274,4.99326,6.46968.69785,8.17008-1.50321.58978-.76343.604-1.15065.89433-2.01596.58269-1.73674,1.3727-4.01585,2.30963-5.57242.16751-.27829.39877-.73601.7988-.53436.56267.28364-.04441,1.03282-.21072,1.42559-.82863,1.95683-1.57151,4.29639-2.13745,6.3509-.20164.73203-.48952,1.73563-.55552,2.47574-.02814.31556-.01001.87647.39836.48951.63491-.60162,1.60582-2.71027,2.03233-3.57596.6647-1.34914,1.40892-3.37545,2.32551-4.5258.95054-1.19296,2.15455-.09497,2.94023.69261,2.53619,2.54234,4.00136,5.41246,8.24272,3.82092.138-.05178.54708-.2134.59448-.31499.64757-2.57097,1.39386-5.1218,2.2543-7.62856.05578-.1625.43352-1.05107.36486-1.12017-.15952-.03166-.30631.05189-.45394.06099-3.17254.19575-6.34376.2208-9.52025.42325-.60931.03883-2.1245.29887-2.62599.14131-.25608-.08046-.2363-.22349-.03343-.37549.36905-.27651,1.17922-.2128,1.62984-.24972,3.51177-.28771,7.03816-.50226,10.54867-.72871.28416-.01833.72747.11133.86648-.16425.54596-1.50258,1.08896-3.0186,1.78782-4.45718.43366-.89267,1.33804-2.66961,2.23285-3.10266.21717-.1051.52202-.14538.70662.03974Z" fill="currentColor"/> <path d="M106.3434,28.14548c-.15094.18618-.36649.44081-.43339.68687-.15418.56704.22904,1.03879.7897,1.09446,1.47363.14634,2.91431-.21994,4.36683-.12265.49894.03342,1.13054.13452,1.45116.54966.61086.79096.1106,1.94929-.25824,2.76659-.35133.7785-.84261,1.53257-1.28448,2.262l.73039-.33022c3.25078-1.82314,6.68886-3.2693,9.99884-4.97661l.36992-.00142c.09236.10248.08883.27285-.00405.36706-.11344.11505-.63346.42276-.80736.52632-1.42108.84625-3.04642,1.50648-4.52158,2.2691-1.7796.92001-3.64552,1.92775-5.38283,2.92363-1.07737.61758-2.10973,1.31027-3.11359,2.04033-.14039.11036-.53432-.07753-.6077-.19141-.36253-.56268.31708-.98891.64225-1.35286,1.13644-1.27196,2.69928-2.83909,3.49487-4.32441.27134-.50658.76987-1.44518.02382-1.74361-.76255-.30503-2.15414-.0387-2.97479.00526-1.07144.0574-3.02516.13632-3.95411-.41252-1.68534-.99574.48717-3.02426,1.41712-3.70087,1.10611-.80477,3.3887-1.88347,4.75273-1.43825.27671.09032.46302.49523.3297.76111-.1665.33205-.47701.30744-.78847.30358-1.60622-.01989-3.21801.78229-4.23673,2.03885Z" fill="currentColor"/> <path d="M97.31653,28.91243c.43811.32406-.21284,1.06045-.37894,1.37611-.59104,1.12319-1.40354,3.32999.1716,4.01452,1.74784.75958,5.18124-.34503,6.89281-1.07302,1.277-.54316,2.53995-1.25894,3.55786-2.20665.16174-.04724.30326.14985.2542.31626-.00704.02387-.27928.3528-.31453.38587-.81503.7645-2.31547,1.60598-3.33421,2.09226-2.06618.98627-6.06603,2.31903-8.20943,1.21417-.06935-.03575-.53364-.37627-.56546-.41965-.24528-.33442-.39187-1.39124-.36183-1.80668.06595-.91225.96712-2.9467,1.5778-3.63647.164-.18524.44965-.44939.71013-.25671Z" fill="currentColor"/> <path d="M98.46818,25.87268c.508-.09874.62782.78197.46606,1.13795-.15391.3387-1.10656,1.20073-1.48399.94855-.20482-.13685.08046-.91161.17411-1.10678.1223-.25485.56732-.92598.84382-.97972Z" fill="currentColor"/> </g> </g> <g> <path d="M49.73506,45.05767h1.07227v3.0498c-.78174.6582-1.86523.99414-2.95996.99414-2.40137,0-4.16602-1.6875-4.16602-3.99902,0-2.3125,1.76465-3.99902,4.18848-3.99902,1.23975,0,2.29004.41309,3.00488,1.20703l-.69287.69238c-.64795-.62598-1.38477-.90527-2.26709-.90527-1.80957,0-3.11621,1.2627-3.11621,3.00488,0,1.71973,1.30664,3.00488,3.10498,3.00488.65869,0,1.27295-.14551,1.83154-.50293v-2.54688Z" fill="currentColor"/> <path d="M58.16524,49.01177l-1.68652-2.40137c-.15625.01074-.32373.02246-.49121.02246h-1.93262v2.37891h-1.1167v-7.81836h3.04932c2.03271,0,3.26123,1.02734,3.26123,2.72461,0,1.20703-.62549,2.07812-1.71973,2.46875l1.854,2.625h-1.21777ZM58.13204,43.91802c0-1.11621-.74854-1.75293-2.17822-1.75293h-1.89893v3.51855h1.89893c1.42969,0,2.17822-.64844,2.17822-1.76562Z" fill="currentColor"/> <path d="M60.41915,45.10259c0-2.29004,1.76465-3.99902,4.16602-3.99902,2.37939,0,4.14404,1.69824,4.14404,3.99902s-1.76465,3.99902-4.14404,3.99902c-2.40137,0-4.16602-1.70898-4.16602-3.99902ZM67.61202,45.10259c0-1.73145-1.29541-3.00488-3.02686-3.00488-1.75342,0-3.04932,1.27344-3.04932,3.00488s1.2959,3.00488,3.04932,3.00488c1.73145,0,3.02686-1.27344,3.02686-3.00488Z" fill="currentColor"/> <path d="M70.36837,45.63872v-4.44531h1.1167v4.40039c0,1.73145.79297,2.51367,2.2002,2.51367,1.40771,0,2.21191-.78223,2.21191-2.51367v-4.40039h1.0835v4.44531c0,2.26758-1.23975,3.46289-3.30615,3.46289-2.05518,0-3.30615-1.19531-3.30615-3.46289Z" fill="currentColor"/> <path d="M85.57833,43.91802c0,1.69824-1.22852,2.72559-3.26123,2.72559h-1.93262v2.36816h-1.1167v-7.81836h3.04932c2.03271,0,3.26123,1.02734,3.26123,2.72461ZM84.46163,43.91802c0-1.11621-.74854-1.75293-2.17822-1.75293h-1.89893v3.50684h1.89893c1.42969,0,2.17822-.63672,2.17822-1.75391Z" fill="currentColor"/> </g> </g> </svg></a>
+      <div class="foot-cta">
+        <p class="foot-claim" id="foot-claim"></p>
+        <a class="btn foot-btn" href="#contact" id="foot-btn"></a>
+      </div>
+    </div>
+    <div class="foot-cols pad">
+      <div><h4 id="fh-con"></h4><ul class="foot-contact">
+        <li><span class="fk">E-mail</span><span class="fv">info@lanartis.com</span></li>
+        <li><span class="fk" id="fk-tel"></span><span class="fv">+36 30 652 26 27</span></li>
+        <li><span class="fk">Lanartis Group Kft.</span><span class="fv">6200 Kiskőrös, Szendrey Júlia u. 3/1.</span></li>
+        <li><span class="fk">Lanartis Feed Kft.</span><span class="fv" id="fv-feed"></span></li>
+      </ul></div>
+      <div><h4 id="fh-div"></h4><ul id="foot-divs"></ul></div>
+      <div><h4 id="fh-grp"></h4><ul id="foot-grp"></ul></div>
+    </div>
+    <div class="foot-bottom pad">
+      <span>© 2026 Lanartis Group</span>
+      <a class="cfree" href="#sutik"><svg class="eu" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" rx="2.5" fill="#1E3F9A"/><circle cx="15.00" cy="3.80" r=".85" fill="#F7D117"/><circle cx="18.10" cy="4.63" r=".85" fill="#F7D117"/><circle cx="20.37" cy="6.90" r=".85" fill="#F7D117"/><circle cx="21.20" cy="10.00" r=".85" fill="#F7D117"/><circle cx="20.37" cy="13.10" r=".85" fill="#F7D117"/><circle cx="18.10" cy="15.37" r=".85" fill="#F7D117"/><circle cx="15.00" cy="16.20" r=".85" fill="#F7D117"/><circle cx="11.90" cy="15.37" r=".85" fill="#F7D117"/><circle cx="9.63" cy="13.10" r=".85" fill="#F7D117"/><circle cx="8.80" cy="10.00" r=".85" fill="#F7D117"/><circle cx="9.63" cy="6.90" r=".85" fill="#F7D117"/><circle cx="11.90" cy="4.63" r=".85" fill="#F7D117"/></svg><svg class="lk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span id="cfree-t"></span></a>
+      <nav id="foot-legal" aria-label="Jogi információk"></nav>
+      <button type="button" class="foot-top-btn" id="to-top"></button>
+    </div>
+  </div>
+  <div class="foot-land" aria-hidden="true"><img src="img/foot-land.webp" alt="" loading="lazy"></div>
+</footer>
+
+<script>
+(function(){
+const root=document.documentElement;
+const L=(o)=>typeof o==='string'?o:`<span class="hu">${o.hu}</span><span class="en">${o.en}</span>`;
+const IC={arrow:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M4 12h16M14 6l6 6-6 6"/></svg>',leaf:'',shield:'',drop:'',box:'',doc:''};
+const NEED=k=>typeof k==='string'&&k.startsWith('need:');
+const needBox=(k)=>{const t=k.slice(5);return `<div class="need"><span>${root.dataset.lang==='en'?'IMAGE NEEDED':'KÉP KELL'}</span><b>${t}</b></div>`};
+const imgTag=(k,cls='',i)=>NEED(k)?`<div class="need-abs ${cls}" data-i="${i}">${needBox(k)}</div>`:`<img src="${IMG[k]}" alt="" class="${cls}" data-i="${i}" loading="lazy">`;
+const ph=(art,cap,cls='',attrs='')=>NEED(art)?`<div class="ph ${cls}" ${attrs}>${needBox(art)}</div>`:`<div class="ph ${cls}" data-art="${art}" ${attrs}>${IMG[art]?`<img src="${IMG[art]}" alt="" loading="${/hero/.test(art)?'eager':'lazy'}" decoding="async">`:''}${cap?`<span class="cap">${cap}</span>`:''}</div>`;
+const COL={ingredients:'var(--c-ing)',petfood:'var(--c-pet)',aqua:'var(--c-aqua)',bait:'var(--c-bait)',mushroom:'var(--c-mush)'};
+const ORDER=['ingredients','petfood','aqua','bait','mushroom'];
+const wave=()=>'';
+
+/* ---------- CONTENT ---------- */
+/* Forrás: Lanartis Website Copy v4 + Lanartis Aqua honlapszöveg (ügyfél), a megrendelő kérése szerint rövidítve. */
+const IMG={}; ['bojli','horgasz-pellet','fd-belsoseg','fd-tasak','dip','horogcsali','harcsa','harcsa-2','ras-telep','haltap-pellet','etetes','fd-zoldseg','etetoanyag','nagy-ponty','nagy-hal-2','hero-poster','foot-land','contact-bg','group-bg','home-hero','aqua-hero','bait-hero','ing-hero','mush-hero','pet-hero','berries','boilies','button','carp','dried-fruit','dried-veg','enoki','lake','meal','oyster','pellets','puree'].forEach(k=>IMG[k]='img/'+k+'.jpg');
+const NAV=[
+  {id:'ingredients',t:{hu:'Alapanyagok',en:'Ingredients'}},
+  {id:'petfood',t:{hu:'Állateledel',en:'Pet food'}},
+  {id:'aqua',t:{hu:'Haltáp',en:'Aqua feed'}},
+  {id:'bait',t:{hu:'Horgászcsali',en:'Fishing bait'}},
+  {id:'mushroom',t:{hu:'Gombadúsító',en:'Mushroom'}},
+  {id:'contact',t:{hu:'Kapcsolat',en:'Contact'}}
+];
+const D={
+ ingredients:{no:'01',art:'ing-hero',brand:'Lanartis Trade',
+  tag:{hu:'Kereskedelem',en:'Trading'},
+  t1:{hu:'Alapanyagok',en:'Ingredients'}, t2:{hu:'jól beszerezve',en:'sourced right'},
+  lead:{hu:'Takarmány- és ipari alapanyagok auditált európai feldolgozóktól, teljes dokumentációval, Magyarországra és a közép-kelet-európai régióba.',en:'Feed-grade and industrial ingredients from audited European processors, fully documented, delivered across Hungary and the CEE region.'},
+  card:{hu:'Állati fehérjék és zsírok állateledelhez, haltáphoz, haszonállat-takarmányhoz, biodízelhez és műtrágyához; élelmiszer-alapanyagok.',en:'Animal proteins and fats for pet food, aqua feed, livestock feed, biodiesel and fertiliser; food ingredients.'},
+  chips:['Pet food','Aqua feed','Livestock','Food','Biodiesel',{hu:'Műtrágya',en:'Fertiliser'}],
+  tiles:[[0,{hu:'Auditált',en:'Audited'},{hu:'európai feldolgozók',en:'European processors'}],[0,{hu:'Teljes',en:'Full'},{hu:'dokumentáció tételenként',en:'documentation per lot'}],[0,{hu:'Gyártói',en:'Producer'},{hu:'tapasztalat a háttérben',en:'experience behind it'}],[0,'CEE',{hu:'szállítás a régióban',en:'delivery across the region'}]],
+  blocks:[
+   {label:{hu:'Nem csak kereskedők',en:'Not just traders'},h:{hu:'Ismerjük az alapanyagot',en:'We know the material'},
+    lead:{hu:'Testvércégünk ugyanezekből az alapanyagokból gyárt takarmányt. Ha egy minőséget vagy forrást ajánlunk, azt valódi gyártási tapasztalatra alapozzuk, nem csak adatlapra.',en:'Our sister company manufactures feed from these same materials. When we recommend a grade or a source, it comes from real production experience — not just a datasheet.'}},
+   {label:{hu:'Iparágak',en:'Industries'},h:{hu:'Kinek szállítunk',en:'Who we supply'},
+    hover:[
+     {img:'pet-hero',h:{hu:'Állateledel',en:'Pet food'},p:{hu:'Fehérje-, zsír- és funkcionális alapanyagok száraz, nedves és fagyasztva szárított eledelhez — a prémium egyösszetevős snacktől a nagyüzemi granulátumig.',en:'Protein, fat and functional ingredients for dry, wet and freeze-dried pet food — from premium single-ingredient snacks to large-scale kibble.'}},
+     {img:'aqua-hero',h:{hu:'Haltáp',en:'Aqua feed'},p:{hu:'Halliszt, halolaj, funkcionális fehérjék és adalékok fajspecifikus tengeri és édesvízi receptúrákhoz.',en:'Fish meal, fish oil, functional proteins and specialty additives for species-specific marine and freshwater formulations.'}},
+     {img:'meal',h:{hu:'Haszonállat-takarmány',en:'Livestock feed'},p:{hu:'Állati fehérjék, zsírok és funkcionális alapanyagok takarmánykeverő üzemeknek — a hatályos uniós etethetőségi szabályok szerint.',en:'Animal proteins, fats and functional ingredients for compound feed mills — in line with current EU feeding rules.'}},
+     {img:'berries',h:{hu:'Élelmiszer',en:'Food'},p:{hu:'Élelmiszer-minőségű alapanyagok — gyümölcssűrítmények, pürék, funkcionális összetevők — tanúsított beszállítóktól, nyomon követhetően.',en:'Food-grade ingredients — fruit concentrates, purées, functional ingredients — from certified suppliers, fully traceable.'}},
+     {img:'meal',h:{hu:'Biodízel',en:'Biodiesel'},p:{hu:'Alapanyag biodízel-gyártóknak: állati zsírok, használt sütőolaj, műszaki olajok FAME-gyártáshoz.',en:'Feedstock for biodiesel producers: animal fats, used cooking oil and technical-grade oils for FAME production.'}},
+     {img:'ing-hero',h:{hu:'Műtrágya',en:'Fertiliser'},p:{hu:'Szerves és szerves-ásványi műtrágya-alapanyagok: feldolgozott állati fehérjék, funkcionális talajjavítók.',en:'Organic and organo-mineral fertiliser inputs: processed animal proteins and functional soil additives.'}}]},
+   {label:{hu:'Termékkör',en:'Range'},h:{hu:'Amit szállítunk',en:'What we supply'},
+    tabs:[
+     {t:{hu:'Állati fehérjék és zsírok',en:'Animal proteins & fats'},items:[{hu:'Baromfiliszt',en:'Poultry meal'},{hu:'Tollliszt',en:'Feather meal'},{hu:'Vérliszt',en:'Blood meal'},{hu:'Halliszt (LT és HT)',en:'Fish meal (LT & HT)'},{hu:'Hús-csontliszt',en:'Meat & bone meal'},{hu:'Tepertőliszt',en:'Greaves meal'},{hu:'Bárány- és sertésliszt',en:'Lamb and pork meal'},{hu:'Hidrolizált fehérjék (baromfi, sertés, hal)',en:'Hydrolysed proteins (poultry, pork, fish)'},{hu:'Baromfi-, csirke-, sertészsír',en:'Poultry, chicken, pork fat'},{hu:'Kacsa- és libazsír',en:'Duck and goose fat'},{hu:'Halolaj (EPA/DHA), lazacolaj',en:'Fish oil (EPA/DHA), salmon oil'}]},
+     {t:{hu:'Növényi fehérjék és keményítők',en:'Plant proteins & starches'},items:[{hu:'Borsófehérje-koncentrátum',en:'Pea protein concentrate'},{hu:'Borsókeményítő, borsórost',en:'Pea starch, pea fibre'},{hu:'Burgonyafehérje',en:'Potato protein'},{hu:'Búzaglutén',en:'Wheat gluten'},{hu:'Napraforgófehérje',en:'Sunflower protein'},{hu:'Kukoricaglutén',en:'Corn gluten meal'},{hu:'Répaszelet',en:'Beet pulp'},{hu:'Lenmagdara',en:'Linseed meal'}]},
+     {t:{hu:'Funkcionális alapanyagok',en:'Functional & specialty'},items:[{hu:'Sörélesztő (szárított, autolizált)',en:"Brewer's yeast (dried, autolysed)"},{hu:'Élesztőkivonat (MOS, béta-glükán)',en:'Yeast extract (MOS, beta-glucan)'},{hu:'Pre- és probiotikumok',en:'Prebiotics and probiotics'},{hu:'Vitamin- és ásványianyag-premix',en:'Vitamin and mineral premix'},'L-Lysine','DL-Methionine','L-Threonine',{hu:'Taurin',en:'Taurine'},{hu:'Természetes antioxidánsok',en:'Natural antioxidants'}]},
+     {t:{hu:'Élelmiszer',en:'Food'},items:[{hu:'Gyümölcssűrítmények',en:'Fruit concentrates'},{hu:'Gyümölcspürék',en:'Fruit purées'},{hu:'Funkcionális élelmiszer-alapanyagok',en:'Functional food ingredients'}]}],
+    note:{hu:'Az állati fehérjék fajonkénti etethetőségét az 1069/2009/EK és a 999/2001/EK rendelet határozza meg; tételenként egyeztetjük.',en:'Species-specific use of animal proteins is governed by Regulations (EC) 1069/2009 and 999/2001; we confirm it lot by lot.'},
+    cta:{hu:'Konkrét anyagot vagy minőséget keres? A termékkör a vevőinkkel együtt bővül.',en:'Looking for a specific material or grade? Our range grows with our customers.'}}
+  ]},
+ petfood:{no:'02',art:'pet-hero',brand:'Lanartis Pet Food',
+  tag:{hu:'Gyártás',en:'Manufacturing'},
+  t1:{hu:'Állateledel',en:'Pet food'}, t2:{hu:'fagyasztva szárítva, rendesen',en:'freeze-dried, done properly'},
+  lead:{hu:'Fagyasztva szárított állateledel gyártása, private label formában prémium márkáknak és kereskedőknek. Az egész üzem egyetlen technológiára épül: a fagyasztva szárításra.',en:'Freeze-dried pet food, manufactured as private label for premium brands and retailers. The whole operation is built around one technology: freeze-drying.'},
+  card:{hu:'Fagyasztva szárított hús, belsőség, gyümölcs és zöldség. Private label gyártás.',en:'Freeze-dried meat, organ, fruit and vegetables. Private label manufacturing.'},
+  chips:[{hu:'Nyers alapanyag',en:'Raw ingredients'},{hu:'Tartósítószer nélkül',en:'No preservatives'},'Private label'],
+  tiles:[[0,{hu:'Hő nélkül',en:'No heat'},{hu:'alacsony hőmérséklet, vákuum',en:'low temperature, vacuum'}],[0,{hu:'Tiszta címke',en:'Clean label'},{hu:'töltőanyag nélkül',en:'no fillers'}],[0,{hu:'Hűtés nélkül',en:'No refrigeration'},{hu:'szobahőmérsékleten tárolható',en:'shelf-stable'}],[0,'Private label',{hu:'az Ön márkájával',en:'under your brand'}]],
+  blocks:[
+   {label:{hu:'Számokban',en:'In numbers'},h:{hu:'Mit ad a fagyasztva szárítás',en:'What freeze-drying delivers'},
+    stats:[{n:2,suf:{hu:'év',en:'years'},l:{hu:'eltarthatóság hűtés nélkül',en:'shelf life without refrigeration'}},{n:85,suf:{hu:'%-kal könnyebb',en:'% lighter'},l:{hu:'a friss nyers termékhez képest (75–85%)',en:'than fresh raw (75–85%)'}},{n:5,suf:{hu:'összetevő, legfeljebb',en:'ingredients max.'},l:{hu:'termékenként jellemzően 1–5',en:'typically 1–5 per product'}},{n:'0',suf:{hu:'tartósítószer',en:'preservatives'},l:{hu:'és nincs töltőanyag',en:'and no fillers'}}]},
+   {label:{hu:'Eljárás',en:'Process'},h:{hu:'Hogyan készül',en:'How it is made'},
+    sticky:[
+     {img:'pet-hero',h:{hu:'Nyers alapanyag',en:'Raw ingredient'},p:{hu:'Hús, belsőség, hal, gyümölcs vagy zöldség — darabolva, kockázva. Nincs főzés, nincs extrudálás.',en:'Meat, organ, fish, fruit or vegetables — cut or diced. No cooking, no extrusion.'}},
+     {img:'berries',h:{hu:'Mélyfagyasztás',en:'Deep freezing'},p:{hu:'Gyorsfagyasztás: a nedvesség jéggé alakul, a szerkezet a helyén marad.',en:'Rapid freezing turns moisture to ice while the structure stays in place.'}},
+     {img:'fd-zoldseg',h:{hu:'Vákuumszárítás',en:'Vacuum drying'},p:{hu:'Alacsony hőmérsékleten, vákuumban a jég közvetlenül gőzzé alakul. A fehérjeszerkezet, az íz és a szín megmarad.',en:'At low temperature and under vacuum, ice turns straight to vapour. Protein structure, flavour and colour are retained.'}},
+     {img:'dried-fruit',h:{hu:'Csomagolás',en:'Packing'},p:{hu:'Páratömör tasakba, tégelybe vagy ömlesztve. Percek alatt visszanedvesíthető.',en:'Into moisture-proof pouches, jars or bulk. Rehydrates in minutes.'}}]},
+   {label:{hu:'Képekben',en:'In pictures'},h:{hu:'Nyers, természetes alapanyag',en:'Raw, natural ingredients'},
+    mosaic:[{img:'pet-hero',cap:{hu:'Nyers marhahús-kocka',en:'Raw beef cubes'}},{img:'berries',cap:{hu:'Gyümölcs',en:'Fruit'}},{img:'fd-zoldseg',cap:{hu:'Zöldség',en:'Vegetables'}},{img:'dried-fruit',cap:{hu:'Szárított gyümölcs',en:'Dried fruit'}},{img:'fd-belsoseg',cap:{hu:'Belsőség, hal',en:'Organ, fish'}},{img:'fd-tasak',cap:'Private label'}]},
+   {label:'Private label',h:{hu:'Gyártás az Ön márkájával',en:'Made under your brand'},
+    lead:{hu:'Akár kész termékbrief van, akár csak egy ötlet — a receptúrától a polcra kerülő csomagolásig végigvisszük.',en:'Whether you have a clear brief or just an idea — we take it from recipe to finished pack on shelf.'},
+    tabs:[
+     {t:{hu:'Fehérjék',en:'Proteins'},items:[{hu:'Marha',en:'Beef'},{hu:'Kacsa',en:'Duck'},{hu:'Nyúl',en:'Rabbit'},{hu:'Lazac',en:'Salmon'},{hu:'Pulyka',en:'Turkey'},{hu:'Bárány',en:'Lamb'},{hu:'Szarvas',en:'Venison'}]},
+     {t:{hu:'Formátumok',en:'Formats'},items:[{hu:'Teljes értékű eledel',en:'Complete meals'},{hu:'Eledelfeltét (topper)',en:'Meal toppers'},{hu:'Egyösszetevős snack',en:'Single-ingredient snacks'},{hu:'Jutalom- és tréningfalat',en:'Treats and training rewards'}]},
+     {t:{hu:'Kiszerelés',en:'Packaging'},items:[{hu:'Tasak',en:'Pouches'},{hu:'Tégely',en:'Jars'},{hu:'Ömlesztett',en:'Bulk'},{hu:'Egyedi címke és dizájn',en:'Custom label and design'},{hu:'Kis próbagyártás márkabevezetéshez',en:'Small pilot runs for launches'}]}],
+    cta:{hu:'Állateledel-projektje van? Beszéljünk róla — akkor is, ha még csak ötlet.',en:'Have a pet food project in mind? Let’s talk — even if it is just an idea.'}}
+  ]},
+ aqua:{no:'03',art:'hero-poster',brand:'Lanartis Aqua',
+  tag:{hu:'Gyártás · Bordány',en:'Manufacturing · Bordány'},
+  t1:{hu:'Haltáp',en:'Aqua feed'}, t2:{hu:'prémium, fenntartható, hazai',en:'premium, sustainable, Hungarian'},
+  lead:{hu:'Saját fejlesztésű, egyedi receptúrájú haltáp afrikai harcsára és pontyra. Gluténmentes, GMO-mentes, antibiotikum-mentes és szójamentes — kukorica-alapú, hazai alapanyagból, funkcionális gyógynövényes premixszel.',en:'In-house developed feed with custom recipes for African catfish and common carp. Gluten-free, GMO-free, antibiotic-free and soy-free — corn-based, from Hungarian raw materials, with a functional herbal premix.'},
+  card:{hu:'Kukorica-alapú haltáp afrikai harcsára és pontyra. Búza-, szója- és GMO-mentes.',en:'Corn-based feed for African catfish and carp. Wheat-, soy- and GMO-free.'},
+  chips:[{hu:'Prémium',en:'Premium'},{hu:'Fenntartható',en:'Sustainable'},{hu:'Egyedi receptúra',en:'Custom recipes'},'RAS'],
+  tiles:[[0,{hu:'Gluténmentes',en:'Gluten-free'},{hu:'búza nélküli receptúra',en:'wheat-free recipe'}],[0,{hu:'GMO-mentes',en:'GMO-free'},{hu:'hazai, nyomon követhető alapanyag',en:'Hungarian, traceable raw materials'}],[0,{hu:'Antibiotikum-mentes',en:'Antibiotic-free'},{hu:'hozamfokozó és rutinszerű gyógyszer nélkül',en:'no growth promoters or routine medication'}],[0,{hu:'Szójamentes',en:'Soy-free'},{hu:'szója helyett hazai kukorica',en:'Hungarian corn instead of soy'}]],
+  blocks:[
+   {label:{hu:'Pillérek',en:'Pillars'},h:{hu:'Öt pillér',en:'Five pillars'},
+    sticky:[
+     {img:'ing-hero',h:{hu:'Kukorica-alapú',en:'Corn-based'},p:{hu:'A kukorica jól emészthető energiaforrás a melegvízi, mindenevő halaknak, kitűnően extrudálható, és természetes xantofillokat (lutein, zeaxantin) ad, amelyeket a hal maga nem tud előállítani.',en:'Corn is a highly digestible energy source for warm-water omnivorous fish, extrudes well, and provides natural xanthophylls (lutein, zeaxanthin) the fish cannot produce itself.'}},
+     {img:'meal',h:{hu:'Glutén- és szójamentes',en:'Gluten- and soy-free'},p:{hu:'Búzát nem használunk, így a táp gluténmentes. A szója antinutritív faktorai (szaponinok, proteázgátlók) és fitoösztrogénjei terhelik a hal emésztését. Búzára nincs szükség: a kukorica adja az energiát és a kötést. A fehérjét kontrollált aminosav-profilú forrásokból építjük fel.',en:'We use no wheat, so the feed is gluten-free. Soy’s antinutritional factors (saponins, protease inhibitors) and phytoestrogens burden digestion. Wheat is not needed: corn provides energy and binding. Protein comes from sources with a controlled amino-acid profile.'}},
+     {img:'home-hero',h:{hu:'GMO-mentes, hazai alapanyag',en:'GMO-free, Hungarian raw materials'},p:{hu:'Magyarország régóta a GMO-mentes mezőgazdaság mellett áll. Tudatosan kerüljük a haltápok legnagyobb GMO-kockázatát, az importált szóját — így a GMO-mentes végterméket célzó gazdaságoknak is választható.',en:'Hungary has long stood for GMO-free agriculture. We deliberately avoid the biggest GMO risk in fish feed — imported soy — so it suits farms targeting GMO-free end products.'}},
+     {img:'carp',h:{hu:'Antibiotikum-mentes szemlélet',en:'Antibiotic-free approach'},p:{hu:'Az egészséges hal alapja a jó táp és a jó tartástechnológia, nem a rutinszerű gyógyszerezés. A receptúra nem tartalmaz hozamfokozó antibiotikumot és rutinszerű gyógyszeres kiegészítést.',en:'Healthy fish start with good feed and good husbandry, not routine medication. The recipe contains no growth-promoting antibiotics and no routine medicated additives.'}},
+     {img:'haltap-pellet',h:{hu:'Funkcionális gyógynövényes premix',en:'Functional herbal premix'},p:{hu:'Saját fejlesztésű premix gondosan válogatott természetes gyógynövényes összetevőkből, amelyek a takarmány ízletességét és természetes jellegét támogatják. Ez a kézjegyünk.',en:'An in-house premix of carefully selected natural herbal ingredients that support palatability and the natural character of the feed. It is our signature.'}}]},
+   {label:{hu:'Képekben',en:'In pictures'},h:{hu:'Haltelep, hal, táp',en:'Farm, fish, feed'},
+    mosaic:[{img:'ras-telep',cap:{hu:'Intenzív haltelep',en:'Intensive farm'}},{img:'harcsa',cap:{hu:'Afrikai harcsa',en:'African catfish'}},{img:'carp',cap:{hu:'Ponty',en:'Carp'}},{img:'haltap-pellet',cap:'Pellet'},{img:'hero-poster',cap:{hu:'Tavi haltelep',en:'Pond farm'}},{img:'etetes',cap:{hu:'Etetés',en:'Feeding'}}]},
+   {label:{hu:'Fajok',en:'Species'},h:{hu:'Melegvízi fajokra és RAS-ra hangolva',en:'Tuned for warm-water species and RAS'},
+    cards:[
+     {img:'carp',h:{hu:'Pontytáp',en:'Carp feed'},lat:'Cyprinus carpio',p:{hu:'Teljes értékű pelletált táp pontynak és más pontyféléknek, az évszakos etetéshez és a telepítési sűrűséghez igazított energia–fehérje aránnyal.',en:'Complete pelleted feed for carp and other cyprinids, with energy-to-protein ratios adapted to seasonal feeding and stocking density.'},list:[{hu:'Előnevelő, nevelő, hízlaló',en:'Starter, grower, grow-out'},{hu:'Extenzív tavi rendszerekhez',en:'For extensive ponds'},{hu:'Több pelletméret',en:'Multiple pellet sizes'}]},
+     {img:'harcsa-2',h:{hu:'Afrikai harcsatáp',en:'African catfish feed'},lat:'Clarias gariepinus',p:{hu:'Magas fehérjetartalmú táp tavi és intenzív RAS-termeléshez, minden növekedési fázisra.',en:'High-protein feed for pond and intensive RAS production, across all growth stages.'},list:[{hu:'Süllyedő és úszó pellet',en:'Sinking and floating pellets'},{hu:'Vízstabil, alacsony kioldódás',en:'Water-stable, low-leaching'},{hu:'Fázisonként eltérő fehérjeszint',en:'Protein level per stage'}]}],
+    note:{hu:'Szemcseméretek és fehérjeszintek: a termékadatlapot kérésre elküldjük.',en:'Pellet sizes and protein levels: product data sheet available on request.'}},
+   {label:{hu:'Termékcsalád',en:'Range'},h:{hu:'Standard, bio és egyedi',en:'Standard, organic and custom'},
+    stats:[{n:1,suf:{hu:'tonna',en:'tonne'},l:{hu:'minimum egyedi receptnél',en:'minimum for custom recipes'}},{n:2,suf:{hu:'termékvonal',en:'product lines'},l:{hu:'standard és bio (fejlesztés alatt)',en:'standard and organic (in development)'}},{n:2,suf:{hu:'formátum',en:'formats'},l:{hu:'süllyedő és úszó',en:'sinking and floating'}},{n:'CEE',l:{hu:'szállítás kiszsákban vagy big bagben',en:'delivery in small sacks or big bags'}}]},
+   {label:'RAS',h:{hu:'RAS-optimalizálás és tanácsadás',en:'RAS optimisation & consultation'},
+    lead:{hu:'A RAS-receptek vízstabilitásra és biofilter-kompatibilitásra készülnek. Új telep tervezésénél vagy bővítésnél gyakorlati tanácsot is adunk.',en:'RAS recipes are formulated for water stability and biofilter compatibility. We also advise farms planning or scaling a RAS operation.'},
+    acc:[
+     {h:{hu:'Rendszertervezési szempontok',en:'System design considerations'},p:{hu:'Mit érdemes a táp oldaláról már a tervezésnél figyelembe venni.',en:'What to consider from the feed side already at the design stage.'}},
+     {h:{hu:'Etetési program ivadéktól a lehalászásig',en:'Feed programme from starter to harvest'},p:{hu:'Fázisonkénti táp- és pelletméret-váltás a telep adottságaihoz igazítva.',en:'Stage-by-stage feed and pellet size transitions fitted to the farm.'}},
+     {h:{hu:'FCR-célok és takarmány-menedzsment',en:'FCR targets and feed management'},p:{hu:'Reális takarmányhasznosítási célok és napi etetési gyakorlat.',en:'Realistic feed conversion targets and daily feeding practice.'}},
+     {h:{hu:'Vízminőség és takarmány',en:'Water quality and feed inputs'},p:{hu:'Hogyan hat a táp összetétele a zárt rendszer vízminőségére.',en:'How feed composition affects water quality in closed systems.'}}]},
+   {label:{hu:'Bizalom',en:'Trust'},h:{hu:'Gyártó, akit ismer',en:'A producer you know'},
+    checks:[{hu:'A Lanartis Feed Kft. saját üzemében, Bordányban gyártjuk — minden tétel mögött valódi gyártó áll, nem közvetítő.',en:'Made by Lanartis Feed in its own plant in Bordány — a real producer behind every batch, not a middleman.'},{hu:'Hazai, ellenőrzött forrásból, rövid és átlátható ellátási lánccal.',en:'Hungarian, verified sources with a short, transparent supply chain.'},{hu:'Tételenkénti minőség-ellenőrzés.',en:'Quality control per batch.'},{hu:'Kontrollált aminosav-egyensúly, stabil pelletminőség, konzisztens tételek.',en:'Controlled amino-acid balance, stable pellet quality, consistent batches.'}],
+    cta:{hu:'Beszéljünk a gazdasága igényeiről — kérjen ajánlatot, vagy jöjjön el hozzánk Bordányba.',en:'Let’s talk about your farm — request a quote, or visit us in Bordány.'}}
+  ]},
+ bait:{no:'04',art:'bait-hero',brand:'Lanartis Baits',
+  tag:{hu:'Bérgyártás',en:'Contract manufacturing'},
+  t1:{hu:'Horgászcsali',en:'Fishing bait'}, t2:{hu:'valódi takarmány-alapanyagból',en:'built on real feed ingredients'},
+  lead:{hu:'Gyártói partner saját márkához: csalifejlesztés és bérgyártás horgászmárkáknak, boltoknak és forgalmazóknak, alacsony minimális rendelési mennyiséggel (MOQ). A haltápgyártás felől jövünk: ugyanazokból a szakmai alapanyagokból dolgozunk.',en:'A manufacturing partner for your own brand: bait development and contract manufacturing for tackle brands, bait shops and distributors, with a low minimum order quantity (MOQ). We come from the aqua feed side and work with the same professional ingredients.'},
+  card:{hu:'Bojli, pellet, etetőanyag, dipek és horogcsalik bérgyártásban, egyedi recepttel.',en:'Boilies, pellets, groundbait, dips and hookbaits under contract, to custom recipes.'},
+  chips:[{hu:'Bérgyártás',en:'Contract'},'Private label',{hu:'Alacsony MOQ',en:'Low MOQ'},{hu:'Egyedi recept',en:'Custom recipes'}],
+  tiles:[[0,'12–24 mm',{hu:'bojliméretek',en:'boilie sizes'}],[0,{hu:'Egyedi recept',en:'Custom recipe'},{hu:'célhalra és vízre',en:'by species and water'}],[0,{hu:'Alacsony MOQ',en:'Low MOQ'},{hu:'kis induló tétel, próbától sorozatig',en:'small first batch, pilot to full scale'}],[0,'EU',{hu:'élelmiszer-biztonsági megfelelés',en:'food-safety compliance'}]],
+  blocks:[
+   {label:{hu:'Szemlélet',en:'Approach'},h:{hu:'Nincs olcsó töltőanyag',en:'No cheap fillers'},
+    lead:{hu:'Valódi halliszt, valódi halolaj, hidrolizált fehérjék, természetes csalogatók. A hal a valódi tápértékre reagál — és az ilyen csali akkor is dolgozik, amikor a harsány, mesterséges csalik már elvesztették a vonzerejüket.',en:'Real fish meal, real fish oil, hydrolysed proteins, natural attractors. Fish respond to genuine nutrition — and such a bait keeps working long after loud, artificial baits have lost their pull.'}},
+   {label:{hu:'Termékek',en:'Products'},h:{hu:'Amit gyártunk',en:'What we make'},
+    hs:[
+     {img:'bojli',h:{hu:'Bojli',en:'Boilies'},p:{hu:'HNV bojli halliszt, halolaj és fagyasztva szárított hal alapon, 12–24 mm. Hal, édes-fűszeres, madáreledel, tigrismogyoró és hibrid receptcsaládok.',en:'HNV boilies on fish meal, fish oil and freeze-dried fish, 12–24 mm. Fish, sweet & spice, birdfood, tigernut and hybrid families.'}},
+     {img:'horgasz-pellet',h:'Pellet',p:{hu:'Mikropellettől (spod, PVA) a horogpelletig; natúr és olajjal bevont; halliszt- vagy halibut-alapú.',en:'From micro pellets (spod, PVA) to hookable pellets; standard and oil-coated; fishmeal or halibut style.'}},
+     {img:'etetoanyag',h:{hu:'Etetőanyag, method mix',en:'Groundbait & method mix'},p:{hu:'Takarmány-alapanyagokból, különböző szemcsemérettel vízhez, halfajhoz és évszakhoz.',en:'From feed ingredients, in various particle sizes for waters, species and seasons.'}},
+     {img:'dip',h:{hu:'Dipek és folyadékok',en:'Dips & liquids'},p:{hu:'Halolaj, hidrolizált fehérje és aminosav-komplex alapon, a bojli- és pelletreceptekhez illesztve.',en:'On fish oils, hydrolysed proteins and amino-acid complexes, matched to boilie and pellet recipes.'}},
+     {img:'horogcsali',h:{hu:'Horogcsalik',en:'Hookbaits'},p:{hu:'Dumbell, wafter, pop-up és corkball — a bojlireceptekhez illesztve, teljes színskálán.',en:'Dumbells, wafters, pop-ups and corkballs — matched to boilie recipes, full colour range.'}}]},
+   {label:{hu:'Képekben',en:'In pictures'},h:{hu:'Nagy hal, tópart, csali',en:'Big fish, lakeside, bait'},
+    mosaic:[{img:'nagy-ponty',cap:{hu:'Nagy hal',en:'Big fish'}},{img:'bait-hero',cap:{hu:'Horgászat tóparton',en:'Lakeside fishing'}},{img:'nagy-hal-2',cap:{hu:'Nagy hal',en:'Big fish'}},{img:'bojli',cap:{hu:'Bojlik',en:'Boilies'}},{img:'horgasz-pellet',cap:'Pellet'},{img:'etetoanyag',cap:{hu:'Etetőanyag',en:'Groundbait'}}]},
+   {label:{hu:'Bérgyártás',en:'Contract'},h:{hu:'A brieftől a kész csomagig',en:'From brief to finished pack'},
+    checks:[{hu:'Receptfejlesztés célhalra és vízre',en:'Recipe development for target species and waters'},{hu:'Alapanyag-beszerzés a haltápos hálózatunkból',en:'Ingredient sourcing through our aqua feed network'},{hu:'Gyártás minden csaliformátumban',en:'Production across all bait formats'},{hu:'Csomagolás az Ön címkéjével és dizájnjával',en:'Packaging with your label and design'},{hu:'EU élelmiszer-biztonsági megfelelés, teljes dokumentáció',en:'EU food-safety compliance, full documentation'},{hu:'Kis próbagyártástól a teljes sorozatig',en:'Small pilot runs to full production'}],
+    cta:{hu:'Akár maga horgászik, akár csalimárkát épít: valódi alapanyag, az Ön neve a csomagon.',en:'Whether you fish yourself or build a bait brand: real ingredients, your name on the pack.'}}
+  ]},
+ mushroom:{no:'05',art:'mush-hero',brand:'Lanartis Mushroom',
+  tag:{hu:'Gyártás',en:'Manufacturing'},
+  t1:{hu:'Gombadúsító',en:'Mushroom supplements'}, t2:{hu:'stabil, fenntartható gyártás',en:'stable, sustainable production'},
+  lead:{hu:'Dúsítóanyag ipari gombatermesztőknek. Szabványosított, jó minőségű alapanyagból, homogén keveréssel — tételről tételre azonos specifikációval.',en:'Supplements for commercial mushroom growers. Standardised, high-quality raw materials, mixed to homogeneous specifications — batch after batch.'},
+  card:{hu:'Dúsítóanyag csiperke- és laskagomba-termesztéshez, egyenletes tételminőséggel.',en:'Supplements for button and oyster mushroom production, with consistent batches.'},
+  chips:[{hu:'Csiperke',en:'Button'},{hu:'Laskagomba',en:'Oyster'},{hu:'Tételenként tesztelve',en:'Every batch tested'}],
+  tiles:[[0,{hu:'Szabványos',en:'Standardised'},{hu:'alapanyag',en:'raw materials'}],[0,{hu:'Homogén',en:'Homogeneous'},{hu:'egyenletes keverés',en:'even mixing'}],[0,{hu:'Tesztelt',en:'Tested'},{hu:'minden tétel',en:'every batch'}],[0,{hu:'Szaktámogatás',en:'Support'},{hu:'közvetlen konzultáció',en:'direct consultation'}]],
+  blocks:[
+   {label:{hu:'Szemlélet',en:'Approach'},h:{hu:'Amit a termelő kézben tart',en:'What a grower controls'},
+    lead:{hu:'Az ipari gombatermesztésben a dúsító azon kevés változók egyike, amelyet a termelő teljesen kézben tart. Mi is így kezeljük: minden tétel tesztelve, minden szállítmány specifikáció szerint. Nincs meglepetés, nincs hozamkiesés.',en:'In commercial mushroom farming, the supplement is one of the few variables a grower fully controls. We treat it accordingly: every batch tested, every shipment to specification. No surprises, no yield disruptions.'}},
+   {label:{hu:'Termékek',en:'Products'},h:{hu:'Két termesztési rendszerre',en:'For two cultivation systems'},
+    cards:[
+     {img:'button',h:'Champion',lat:'Agaricus bisporus',p:{hu:'Dúsító ipari csiperketermesztéshez, standard komposztra. Bevált aminosav- és tápanyagprofil a gyorsabb termesztési ciklusokért és a magasabb hozamért.',en:'For industrial button mushroom production on standard compost. A proven amino-acid and nutrient profile for faster cycles and higher yields.'}},
+     {img:'oyster',h:{hu:'Laskagomba',en:'Oyster mushroom'},lat:'Pleurotus',p:{hu:'Dúsító laskagomba-szubsztrátokhoz: gyorsabb átszövés, magasabb első termőhullám. Szalma-alapú és egyéb lignocellulóz rendszerekhez.',en:'For oyster mushroom substrates: faster colonisation, higher first-flush yields. For straw-based and other lignocellulosic systems.'}}]},
+   {label:{hu:'Miért mi',en:'Why us'},h:{hu:'Miért választanak minket a termelők',en:'Why growers choose us'},
+    checks:[{hu:'Szabványosított alapanyag — minden tételben ugyanaz a minőség',en:'Standardised raw materials — same quality every batch'},{hu:'Homogén keverés — egyenletes eloszlás a teljes dúsítóban',en:'Homogeneous mixing — even distribution throughout'},{hu:'Stabil, megismételhető összetétel szállítmányról szállítmányra',en:'Stable, repeatable composition shipment to shipment'},{hu:'Igazolt hozamnövekedés a szokásos bekeverési arány mellett',en:'Proven yield improvement at standard inclusion rates'},{hu:'Közvetlen technikai támogatás',en:'Direct technical support'},{hu:'Nagyobb üzemeknek egyedi, szubsztrát-specifikus receptúra',en:'Custom, substrate-specific formulations for larger operations'}],
+    gal:[['button'],['oyster'],['enoki']],
+    cta:{hu:'Gombatermesztő? Írja meg a szubsztrátot és a hozamcélt — javasoljuk a megfelelő dúsítót és bekeverési arányt.',en:'Run a mushroom farm? Tell us your substrate and yield targets — we will recommend the right supplement and inclusion rate.'}}
+  ]}
+};
+
+/* ---------- RENDER ---------- */
+const navHtml=()=>NAV.map(n=>`<a href="#${n.id}">${L(n.t)}</a>`).join('');
+document.getElementById('nav-main').innerHTML=navHtml();
+const fset=(id,h)=>{const e=document.getElementById(id);if(e)e.innerHTML=h};
+fset('foot-claim',L({hu:'Alapanyag, haltáp, csali, gombadúsító és állateledel — egy csoportból, közvetlen kapcsolattal.',en:'Ingredients, aqua feed, bait, mushroom supplements and pet food — one group, direct contact.'}));
+fset('foot-btn',L({hu:'Ajánlatkérés',en:'Request a quote'})+IC.arrow);
+fset('fh-div',L({hu:'Területek',en:'Divisions'}));fset('fh-grp',L({hu:'Csoport',en:'Group'}));fset('fh-con',L({hu:'Elérhetőség',en:'Contact'}));
+fset('fk-tel',L({hu:'Telefon',en:'Phone'}));fset('fv-feed',L({hu:'Gyártóüzem, Bordány',en:'Production plant, Bordány'}));
+fset('foot-divs',['ingredients','petfood','aqua','bait','mushroom'].map(id=>`<li><a href="#${id}">${L(NAV.find(n=>n.id===id).t)}</a></li>`).join(''));
+const LEG=[['impresszum',{hu:'Impresszum',en:'Legal notice'}],['adatkezeles',{hu:'Adatkezelés',en:'Privacy'}],['sutik',{hu:'Sütimentesség',en:'Cookie-free'}]];
+fset('foot-grp',[['home',{hu:'Főoldal',en:'Home'}],['contact',{hu:'Kapcsolat',en:'Contact'}],...LEG].map(([id,t])=>`<li><a href="#${id}">${L(t)}</a></li>`).join(''));
+fset('foot-legal',LEG.map(([id,t])=>`<a href="#${id}">${L(t)}</a>`).join(''));
+fset('cfree-t',L({hu:'100% sütimentes · minden adat az EU-ban tárolva',en:'100% cookie-free · all data hosted in the EU'}));
+fset('to-top',L({hu:'Vissza a tetejére ↑',en:'Back to top ↑'}));
+document.getElementById('to-top').addEventListener('click',()=>scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}));
+document.getElementById('mobile-nav').innerHTML=`<a href="#home">${L({hu:'Főoldal',en:'Home'})}<span>→</span></a>`+NAV.map(n=>`<a href="#${n.id}">${L(n.t)}<span>→</span></a>`).join('');
+const btn=(href,t,cls='')=>`<a class="btn ${cls}" href="${href}">${L(t)}${IC.arrow}</a>`;
+const cta=()=>`<section class="cta pad"><span class="label rv">${L({hu:'Ajánlatkérés · specifikáció · minta',en:'Quotes · specifications · samples'})}</span>
+  <h2 class="rv">${L({hu:'Kapcsolat',en:'Get in touch'})}</h2>
+  <div class="row rv"><p class="muted">${L({hu:'Írja meg, melyik termék érdekli, milyen mennyiségben és hova szállítva.',en:'Tell us the product, the quantity and the delivery location.'})}</p>${btn('#contact',{hu:'Írjon nekünk',en:'Write to us'})}</div></section>`;
+
+function home(){
+  return `
+  <section class="ph hero shade" data-art="home-hero" data-parallax>
+    <!-- HERO VIDEÓ: Magnific stock (Drone view of tranquil fish farming site at dusk, Bulgaria), 4K (nagy kijelzőn) / 1080p, néma, loop -->
+    <video autoplay muted loop playsinline preload="auto" poster="img/hero-poster.jpg" aria-hidden="true" data-hd="img/hero-1080.mp4" data-uhd="img/hero-4k.mp4"></video>
+    <div class="in pad">
+      <span class="label fade-in">Lanartis Group · ${L({hu:'Kereskedelem és gyártás · Magyarország',en:'Trading & manufacturing · Hungary'})}</span>
+      <h1>${L({hu:'<span class="ln"><span>Alapanyag és takarmány</span></span><span class="ln"><span>azoknak, akik</span></span><span class="ln"><span>a <span class="ser">világot</span> etetik.</span></span>',en:'<span class="ln"><span>Ingredients and feed</span></span><span class="ln"><span>for the people who</span></span><span class="ln"><span>feed the <span class="ser">world</span>.</span></span>'})}</h1>
+      <div class="row fade-in"><div style="display:grid;gap:14px"><p class="sub">${L({hu:'Magyar agrár-élelmiszeripari csoport',en:'A Hungarian agri-food group'})}</p><p class="lead">${L({hu:'Alapanyag-kereskedelem, valamint haltáp, horgászcsali, gombadúsító és fagyasztva szárított állateledel gyártása — öt szakosodott területen.',en:'Raw material trading, plus manufacturing of fish feed, fishing bait, mushroom supplements and freeze-dried pet food — in five specialised businesses.'})}</p></div>
+      <div class="btns">${btn('#ingredients',{hu:'Területeink',en:'Our divisions'})}${btn('#contact',{hu:'Kapcsolat',en:'Contact'},'ghost')}</div></div>
+    </div>
+  </section>
+  </div>
+  <div class="marquee" aria-hidden="true"><div class="track">${[0,1].map(()=>[['meal',{hu:'Fehérjék',en:'Proteins'},0],['ing-hero',{hu:'Zsírok',en:'Fats'},1],['fd-zoldseg',{hu:'Fagyasztva szárítva',en:'Freeze-dried'},0],['haltap-pellet',{hu:'Haltáp',en:'Aqua feed'},1],['bojli',{hu:'Bojli',en:'Boilies'},0],['horgasz-pellet',{hu:'Pellet',en:'Pellets'},1],['button',{hu:'Gombadúsító',en:'Mushroom supplements'},0],['berries',{hu:'Élelmiszer',en:'Food'},1]].map(([im,t,it])=>`<span class="mq-item${it?' it':''}"><span class="mq-ph"><img src="${IMG[im]}" alt="" loading="lazy"></span><span class="mq-t">${L(t)}</span></span><span class="mq-sep">✦</span>`).join('')).join('')}</div></div>
+
+  ${wave('var(--night)','var(--cream)')}
+  <section class="band pad"><div class="center">
+    <span class="label rv">${L({hu:'A csoportról',en:'About the group'})}</span>
+    <p class="statement" data-fill>${L({hu:'Szakosodott vállalkozások egy csoportban. Mindegyiknek <span class="ser">saját</span> csapata, termékköre és vevői vannak — közös bennük a tiszta minőség, a közvetlen kommunikáció és a hosszú távú partnerség.',en:'Specialised businesses in one group. Each has <span class="ser">its own</span> team, products and customers — what connects them is honest quality, direct communication and long-term partnership.'})}</p>
+  </div></section>
+  <section class="story" aria-label="Lanartis Group">
+    <div class="story-in ph shade" data-art="group-bg">
+      <div class="story-text pad">
+        <p class="statement story-fill">${L({hu:'Akár egyetlen konténer halliszt kell, akár teljes private label gyártás, mindig olyan szakemberrel beszél, aki az adott területet belülről ismeri — nem egy általános értékesítővel, aki osztályról osztályra küldi.',en:'Whether you need a single container of fish meal or a full private label production run, you speak to specialists who know that business inside out — not a general salesperson passing you between departments.'})}</p>
+      </div>
+    </div>
+  </section>
+  <section class="pad" style="padding-block:clamp(72px,10vw,150px)">
+    <span class="label rv">${L({hu:'Amire számíthat',en:'What to expect'})}</span>
+    <p class="big-line" data-fill><span class="hu">Auditált európai beszállítók <span style="white-space:nowrap"><span class="ipill" aria-hidden="true"><img src="img/ing-hero.jpg" alt="" loading="lazy"></span>,</span> tételenként dokumentálva <span style="white-space:nowrap"><span class="ipill" aria-hidden="true"><img src="img/meal.jpg" alt="" loading="lazy"></span>,</span> saját üzemben gyártva, Bordányban <span class="ipill" aria-hidden="true"><img src="img/hero-poster.jpg" alt="" loading="lazy"></span> — és leszállítva a CEE-régióba és azon túl <span style="white-space:nowrap"><span class="ipill" aria-hidden="true"><img src="img/home-hero.jpg" alt="" loading="lazy"></span>.</span></span><span class="en">Audited European suppliers <span style="white-space:nowrap"><span class="ipill" aria-hidden="true"><img src="img/ing-hero.jpg" alt="" loading="lazy"></span>,</span> documented lot by lot <span style="white-space:nowrap"><span class="ipill" aria-hidden="true"><img src="img/meal.jpg" alt="" loading="lazy"></span>,</span> manufactured in our own plant in Bordány <span class="ipill" aria-hidden="true"><img src="img/hero-poster.jpg" alt="" loading="lazy"></span> — and delivered across CEE and beyond <span style="white-space:nowrap"><span class="ipill" aria-hidden="true"><img src="img/home-hero.jpg" alt="" loading="lazy"></span>.</span></span></p>
+    <p class="muted rv" style="font-size:.9rem;margin-top:36px">Lanartis Group Kft. · Lanartis Trade Kft. · Lanartis Feed Kft.</p>
+  </section>
+  ${wave('var(--cream)','var(--night)')}
+
+  <section style="padding-block:clamp(60px,8vw,110px) 0">
+    <div class="pad" style="display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:36px">
+      <h2 class="rv">${L({hu:'Területeink',en:'Divisions'})}</h2><p class="sub rv hint-hover">${L({hu:'vigye fölé az egeret',en:'hover to preview'})}</p></div>
+    <div class="drows">${ORDER.map(id=>{const d=D[id];return `<a class="drow" href="#${id}">${ph(d.art,'')}
+      <div class="in pad"><span class="no">${d.no} · ${d.brand}</span><h3>${L(d.t1)} <span class="ser">${L(d.t2)}</span></h3><p>${L(d.card)}</p><span class="go">${IC.arrow}</span></div></a>`}).join('')}</div>
+  </section>
+
+  <section class="band pad"><div class="split">
+    <div style="display:grid;gap:16px;align-content:start"><span class="label rv">${L({hu:'Menet',en:'Process'})}</span><h2 class="rv">${L({hu:'Hogyan <span class="ser">dolgozunk</span>',en:'How we <span class="ser">work</span>'})}</h2></div>
+    <ol class="prog">
+      <li class="rv"><div><b>${L({hu:'Ajánlatkérés',en:'Enquiry'})}</b><span>${L({hu:'Termék, mennyiség, szállítási hely. A területi kapcsolattartó válaszol.',en:'Product, quantity, delivery location. The division contact replies.'})}</span></div></li>
+      <li class="rv"><div><b>${L({hu:'Specifikáció és minta',en:'Specification & sample'})}</b><span>${L({hu:'Termékspecifikáció, igény szerint minta; gyártásnál egyedi receptúra.',en:'Product specification and samples on request; custom recipes for manufacturing.'})}</span></div></li>
+      <li class="rv"><div><b>${L({hu:'Szállítás és dokumentáció',en:'Delivery & documents'})}</b><span>${L({hu:'Tételenként analitikai bizonylat; állati mellékterméknél TRACES-okmány.',en:'Certificate of analysis per lot; TRACES document for animal by-products.'})}</span></div></li>
+    </ol></div></section>
+  ${cta()}`;
+}
+
+function division(id){
+  const d=D[id], col=COL[id];
+  let alt=0;
+  const blocks=d.blocks.map(b=>{
+    const cream=(alt++%2===1);
+    let body='';
+    if(b.text) body+=`<p class="statement rv" style="font-size:clamp(1.3rem,2.2vw,1.9rem)">${L(b.text)}</p>`;
+    if(b.species) body+=`<div class="species">${b.species.map(s=>`<article class="rv">${ph(s[0],s[4])}<div class="txt"><h3>${L(s[1])}</h3><span class="lat">${s[2]}</span><p class="muted">${L(s[3])}</p></div></article>`).join('')}</div>`;
+    if(b.table) body+=`<div class="tbl rv"><table><thead><tr>${b.table.head.map(h=>`<th>${L(h)}</th>`).join('')}</tr></thead><tbody>${b.table.rows.map(r=>`<tr>${r.map(c=>`<td>${L(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+    if(b.rows) body+=`<ul class="rows">${b.rows.map(r=>`<li class="rv"><strong>${L(r[0])}</strong><span>${L(r[1])}</span></li>`).join('')}</ul>`;
+    if(b.steps) body+=`<ol class="prog">${b.steps.map(s=>`<li class="rv"><div><b>${L(s[0])}</b><span>${L(s[1])}</span></div></li>`).join('')}</ol>`;
+    if(b.gal) body+=`<div class="gal">${b.gal.slice(0,3).map(g=>ph(g[0],'','clip')).join('')}</div>`;
+    if(b.lead) body+=`<p class="lead-p rv">${L(b.lead)}</p>`;
+    if(b.stats) body+=`<div class="stats">${b.stats.map(s=>`<div class="stat rv"><b data-count="${typeof s.n==='number'?s.n:''}">${typeof s.n==='number'?'0':s.n}</b><span class="suf">${s.suf?L(s.suf):''}</span><span class="muted">${L(s.l)}</span></div>`).join('')}</div>`;
+    if(b.sticky) body+=`<div class="sticky-wrap"><ol class="st-list">${b.sticky.map((x,i)=>`<li class="st-item${i?'':' on'}" data-i="${i}"><span class="st-no">0${i+1}</span><h3>${L(x.h)}</h3><p class="muted">${L(x.p)}</p>${ph(x.img,'','st-mob')}</li>`).join('')}</ol><div class="st-media" aria-hidden="true"><div class="st-frame">${b.sticky.map((x,i)=>imgTag(x.img,i?'':'on',i)).join('')}</div></div></div>`;
+    if(b.hover) body+=`<div class="hv"><ul class="hv-list">${b.hover.map((x,i)=>`<li tabindex="0" data-i="${i}" class="${i?'':'on'}"><div><h3>${L(x.h)}</h3><p class="muted">${L(x.p)}</p></div><span class="hv-arr">→</span></li>`).join('')}</ul><div class="hv-media" aria-hidden="true">${b.hover.map((x,i)=>imgTag(x.img,i?'':'on',i)).join('')}</div></div>`;
+    if(b.tabs) body+=`<div class="tabs rv"><div class="tab-bar" role="tablist">${b.tabs.map((t,i)=>`<button type="button" role="tab" aria-selected="${!i}" data-i="${i}">${L(t.t)}</button>`).join('')}</div>${b.tabs.map((t,i)=>`<ul class="pills-l" data-i="${i}" ${i?'hidden':''}>${t.items.map(x=>`<li>${L(x)}</li>`).join('')}</ul>`).join('')}</div>`;
+    if(b.cards) body+=`<div class="cards2">${b.cards.map(c=>`<article class="card2 rv">${ph(c.img,'','card-ph')}<div class="in"><h3>${L(c.h)}</h3>${c.lat?`<span class="lat">${c.lat}</span>`:''}<p class="muted">${L(c.p)}</p>${c.list?`<ul class="checks-s">${c.list.map(x=>`<li>${L(x)}</li>`).join('')}</ul>`:''}</div></article>`).join('')}</div>`;
+    if(b.hs) body+=`<div class="hs-wrap"><div class="hs" tabindex="0">${b.hs.map(x=>`<article class="hs-card">${ph(x.img,'','hs-ph')}<h3>${L(x.h)}</h3><p class="muted">${L(x.p)}</p></article>`).join('')}</div><div class="hs-nav"><button type="button" class="hs-btn" data-d="-1" aria-label="Vissza">←</button><button type="button" class="hs-btn" data-d="1" aria-label="Tovább">→</button></div></div>`;
+    if(b.mosaic) body+=`<div class="mosaic">${b.mosaic.map((x,i)=>`<figure class="mo rv" style="transition-delay:${(i%3)*.08}s">${ph(x.img,'','mo-ph')}<figcaption>${L(x.cap)}</figcaption></figure>`).join('')}</div>`;
+    if(b.checks) body+=`<ul class="checks">${b.checks.map(x=>`<li class="rv">${L(x)}</li>`).join('')}</ul>`;
+    if(b.acc) body+=`<div class="acc">${b.acc.map(x=>`<details class="rv"><summary><span>${L(x.h)}</span><i aria-hidden="true"></i></summary><p class="muted">${L(x.p)}</p></details>`).join('')}</div>`;
+    if(b.cta) body+=`<div class="cta-in rv"><p class="statement" style="font-size:clamp(1.3rem,2.2vw,1.9rem)">${L(b.cta)}</p>${btn('#contact',{hu:'Ajánlatkérés',en:'Request a quote'})}</div>`;
+    if(b.note) body+=`<p class="note rv">${L(b.note)}</p>`;
+    const bg=cream?'var(--cream)':col;
+    return {bg, html:`<section class="band pad ${cream?'cream':''}" style="background:${bg}"><div class="block"><div class="side"><span class="label rv">${L(b.label)}</span><h2 class="rv" style="font-size:clamp(2.4rem,5vw,4.6rem)">${L(b.h)}</h2></div><div class="body">${body}</div></div></section>`};
+  });
+  let out='', prev=col;
+  blocks.forEach((b,i)=>{ if(i>0) out+=wave(prev,b.bg); out+=b.html; prev=b.bg; });
+  const n=ORDER[(ORDER.indexOf(id)+1)%ORDER.length], nd=D[n];
+  return `
+  <section class="ph hero shade" data-art="${d.art}" data-parallax>
+    ${IMG[d.art]?`<img src="${IMG[d.art]}" alt="" decoding="async">`:''}
+    <div class="in pad">
+      <span class="label fade-in">${d.brand} · ${L(d.tag)}</span>
+      <h1 style="font-size:clamp(3.4rem,11vw,10.5rem)"><span class="ln"><span>${L(d.t1)}</span></span></h1>
+      <div class="row fade-in"><div style="display:grid;gap:14px"><p class="sub">${L(d.t2)}</p><p class="lead">${L(d.lead)}</p><ul class="chips">${d.chips.map(c=>`<li>${L(c)}</li>`).join('')}</ul></div>
+      ${btn('#contact',{hu:'Ajánlatkérés',en:'Request a quote'})}</div>
+    </div>
+  </section>
+  <div class="info pad" style="background:${col}">${d.tiles.map(t=>`<div class="rv"><b>${L(t[1])}</b><span>${L(t[2])}</span></div>`).join('')}</div>
+  <div style="background:${col}">${out}</div>
+  ${wave(prev,'var(--night)')}
+  <a class="ph next shade" data-art="${nd.art}" href="#${n}">${IMG[nd.art]?`<img src="${IMG[nd.art]}" alt="" loading="lazy">`:''}
+    <div class="in pad"><div style="display:grid;gap:12px"><span class="label">${L({hu:'Következő terület',en:'Next division'})} · ${nd.no}</span><h2>${L(nd.t1)}</h2><span class="sub">${L(nd.t2)}</span></div><span class="btn">${L({hu:'Megnyitás',en:'Open'})}${IC.arrow}</span></div>
+  </a>
+  ${cta()}`;
+}
+
+function contact(){
+  return `<section class="ct-hero" id="ct-hero">
+    <div class="ct-bg"><img src="img/foot-land.jpg" alt="" decoding="async"></div>
+    <div class="ct-grid pad">
+      <div class="ct-left">
+        <span class="label fade-in">${L({hu:'Kapcsolat',en:'Contact'})}</span>
+        <h1 class="ct-title"><span class="ln"><span>${L({hu:'Beszéljünk',en:'Let\'s talk'})}</span></span><span class="ln"><span class="ser">${L({hu:'a termékről.',en:'product.'})}</span></span></h1>
+        <p class="ct-lead fade-in">${L({hu:'Írja meg, mire van szüksége — a terület felelőse jellemzően 24 órán belül válaszol, ajánlattal, specifikációval vagy mintával.',en:'Tell us what you need — the division lead usually replies within 24 hours with a quote, specification or sample.'})}</p>
+        <div class="ct-cards fade-in">
+          <div class="ct-card"><span class="k">E-mail</span><code id="mail">info@lanartis.com</code><button type="button" id="copy-mail">${L({hu:'Másolás',en:'Copy'})}</button></div>
+          <div class="ct-card"><span class="k">${L({hu:'Telefon',en:'Phone'})}</span><b>+36 30 652 26 27</b><span class="clock" id="ct-clock"></span></div>
+        </div>
+        <ol class="ct-steps fade-in">
+          <li><b>01</b><span>${L({hu:'Elküldi az igényt',en:'You send your request'})}</span></li>
+          <li><b>02</b><span>${L({hu:'24 órán belül válaszolunk',en:'We reply within 24 hours'})}</span></li>
+          <li><b>03</b><span>${L({hu:'Ajánlat, specifikáció, minta',en:'Quote, specification, sample'})}</span></li>
+        </ol>
+      </div>
+      <div class="ct-right"><form class="cform glass-form" id="cform" novalidate>
+      <div class="f2">
+        <label class="fld"><span>${L({hu:'Név',en:'Name'})} *</span><input id="f-name" name="name" autocomplete="name" required></label>
+        <label class="fld"><span>${L({hu:'Cég',en:'Company'})}</span><input id="f-company" name="company" autocomplete="organization"></label>
+      </div>
+      <div class="f2">
+        <label class="fld"><span>E-mail *</span><input id="f-email" name="email" type="email" autocomplete="email" required></label>
+        <label class="fld"><span>${L({hu:'Telefon',en:'Phone'})}</span><input id="f-phone" name="phone" type="tel" autocomplete="tel"></label>
+      </div>
+      <fieldset class="fld chipsel"><legend>${L({hu:'Melyik terület érdekli?',en:'Which division?'})} *</legend>
+        <div>${ORDER.map(id=>`<label><input type="radio" name="division" value="${id}" required><span>${L(D[id].t1)}</span></label>`).join('')}<label><input type="radio" name="division" value="other"><span>${L({hu:'Egyéb',en:'Other'})}</span></label></div>
+      </fieldset>
+      <div class="f2">
+        <label class="fld"><span>${L({hu:'Mennyiség',en:'Quantity'})}</span><input id="f-qty" name="qty" placeholder="${root.dataset.lang==='en'?'e.g. 20 t / month':'pl. 20 t / hó'}" data-ph-hu="pl. 20 t / hó" data-ph-en="e.g. 20 t / month"></label>
+        <label class="fld"><span>${L({hu:'Szállítási hely',en:'Delivery location'})}</span><input id="f-loc" name="loc" placeholder="${root.dataset.lang==='en'?'e.g. HU, Szeged':'pl. HU, Szeged'}" data-ph-hu="pl. HU, Szeged" data-ph-en="e.g. HU, Szeged"></label>
+      </div>
+      <label class="fld"><span>${L({hu:'Üzenet',en:'Message'})} *</span><textarea id="f-msg" name="msg" rows="5" required></textarea></label>
+      <label class="consent"><input type="checkbox" id="f-gdpr" required><span>${L({hu:'Elfogadom, hogy a megadott adatokat a Lanartis Group az ajánlatkérés megválaszolására kezelje. <a href="#adatkezeles">Adatkezelési tájékoztató</a>',en:'I agree that Lanartis Group processes my data to answer this enquiry. <a href="#adatkezeles">Privacy notice</a>'})} *</span></label>
+      <div class="f-actions"><button type="submit" class="btn">${L({hu:'Üzenet küldése',en:'Send message'})}${IC.arrow}</button><p class="f-status" id="f-status" role="status" aria-live="polite"></p></div>
+    </form></div>
+    </div>
+  </section>
+  <section class="pad ct-divs"><span class="label rv">${L({hu:'Közvetlenül a területhez',en:'Straight to the division'})}</span>
+    <div class="ct-dgrid">${ORDER.map((id,i)=>`<a class="ct-d rv" href="#contact" data-div="${id}" style="transition-delay:${i*.06}s"><img src="${IMG[D[id].art]}" alt="" loading="lazy"><span class="ct-dn">${D[id].no}</span><b>${L(D[id].t1)}</b><em>${D[id].brand}</em><i>${L({hu:'Erről írok →',en:'Write about this →'})}</i></a>`).join('')}</div>
+  </section>`;
+}
+
+function legalPage(title,sub,body){
+  return `<section class="pad legal" style="padding-block:170px 110px">
+    <span class="label fade-in">Lanartis Group</span>
+    <h1 style="font-size:clamp(2.8rem,8vw,6.5rem);margin-top:18px"><span class="ln"><span>${L(title)}</span></span></h1>
+    <p class="sub fade-in" style="margin-top:14px">${L(sub)}</p>
+    <p class="note" style="margin-top:28px">${L({hu:'Tervezet — élesítés előtt jogi ellenőrzés és a hiányzó adatok kitöltése szükséges.',en:'Draft — requires legal review and completion before going live.'})}</p>
+    <div class="legal-body">${body}</div>
+  </section>`;
+}
+const F=t=>`<i class="fill">${t}</i>`;
+function impresszum(){
+  const row=(k,v)=>`<div class="lrow"><dt>${L(k)}</dt><dd>${v}</dd></div>`;
+  return legalPage({hu:'Impresszum',en:'Legal notice'},{hu:'A weboldal üzemeltetőjének adatai',en:'Website operator details'},`
+  <h2>Lanartis Group Kft.</h2><dl class="ldl">
+   ${row({hu:'Teljes név',en:'Full name'},'Lanartis Group Korlátolt Felelősségű Társaság')}
+   ${row({hu:'Székhely',en:'Registered office'},'6200 Kiskőrös, Szendrey Júlia utca 3/1.')}
+   ${row({hu:'Cégjegyzékszám',en:'Company reg. no.'},'03-09-140194')}
+   ${row({hu:'Nyilvántartó bíróság',en:'Registry court'},L({hu:'Kecskeméti Törvényszék Cégbírósága',en:'Company Registry Court of Kecskemét'}))}
+   ${row({hu:'Adószám',en:'Tax number'},'33025562-2-03')}
+   ${row({hu:'Képviseli',en:'Represented by'},L({hu:'Lantos Balázs ügyvezető',en:'Balázs Lantos, managing director'}))}
+   ${row('E-mail','info@lanartis.com')}
+   ${row({hu:'Telefon',en:'Phone'},'+36 30 652 26 27')}
+  </dl>
+  <h2>Lanartis Trade Kft.</h2><dl class="ldl">
+   ${row({hu:'Székhely',en:'Registered office'},F('[székhely]'))}
+   ${row({hu:'Cégjegyzékszám',en:'Company reg. no.'},F('[cégjegyzékszám]'))}
+   ${row({hu:'Adószám',en:'Tax number'},F('[adószám]'))}
+  </dl>
+  <h2>Lanartis Feed Kft.</h2><dl class="ldl">
+   ${row({hu:'Telephely',en:'Plant'},'Bordány '+F('[pontos cím]'))}
+   ${row({hu:'Székhely',en:'Registered office'},F('[székhely]'))}
+   ${row({hu:'Cégjegyzékszám',en:'Company reg. no.'},F('[cégjegyzékszám]'))}
+   ${row({hu:'Adószám',en:'Tax number'},F('[adószám]'))}
+  </dl>
+  <h2>${L({hu:'Tárhelyszolgáltató',en:'Hosting provider'})}</h2><dl class="ldl">
+   ${row({hu:'Név',en:'Name'},F('[szolgáltató neve]'))}
+   ${row({hu:'Cím',en:'Address'},F('[cím]'))}
+   ${row('E-mail',F('[e-mail]'))}
+  </dl>
+  <p class="muted">${L({hu:'A weboldal tartalma (szövegek, képek, logó) szerzői jogi védelem alatt áll.',en:'Website content (text, images, logo) is protected by copyright.'})}</p>
+  <h2>${L({hu:'Fotók',en:'Photo credits'})}</h2>
+  <p class="muted" style="font-size:.9rem">Wikimedia Commons: Zahara5555 (CC BY-SA 4.0) · Narek75 (CC BY-SA 4.0, 2×) · Loozrboy (CC BY-SA 2.0) · Fumikas Sagisavas (CC0) · Jarosław Mintus (CC BY-SA 4.0) · ASSOPECHE (CC BY-SA 4.0) · Albandegoulaine (CC BY-SA 4.0) · Clarias gariepinus (public domain). Unsplash: NOAA, Jonathan Sanchez, Dogfluence.com, Arins Good Girl Dog Treats, Nika Benedictova, Kaptured by Kasia. ${L({hu:'Egyéb fotók és videó: Magnific licenc.',en:'Other photos and video: Magnific licence.'})}</p>`);
+}
+function adatkezeles(){
+  const sec=(h,t)=>`<h2>${L(h)}</h2><p>${L(t)}</p>`;
+  return legalPage({hu:'Adatkezelési tájékoztató',en:'Privacy notice'},{hu:'Hogyan kezeljük az ajánlatkérés során megadott adatokat',en:'How we handle data submitted with an enquiry'},
+  sec({hu:'Adatkezelő',en:'Controller'},{hu:'Lanartis Group Kft. (6200 Kiskőrös, Szendrey Júlia utca 3/1.; cégjegyzékszám: 03-09-140194; adószám: 33025562-2-03; képviseli: Lantos Balázs ügyvezető), e-mail: info@lanartis.com.',en:'Lanartis Group Kft. (6200 Kiskőrös, Szendrey Júlia utca 3/1., Hungary; reg. no. 03-09-140194; tax no. 33025562-2-03; represented by Balázs Lantos, managing director), e-mail: info@lanartis.com.'})+
+  sec({hu:'Kezelt adatok',en:'Data processed'},{hu:'A kapcsolatfelvételi űrlapon megadott név, cégnév, e-mail cím, telefonszám, az érdeklődési terület, a mennyiség, a szállítási hely és az üzenet szövege.',en:'Name, company, e-mail, phone number, division of interest, quantity, delivery location and message submitted via the contact form.'})+
+  sec({hu:'Cél és jogalap',en:'Purpose and legal basis'},{hu:'Az ajánlatkérés megválaszolása és a kapcsolattartás. Jogalap: az érintett hozzájárulása (GDPR 6. cikk (1) a)), illetve szerződéskötést megelőző lépések (GDPR 6. cikk (1) b)).',en:'Answering the enquiry and keeping in contact. Legal basis: consent (GDPR Art. 6(1)(a)) and steps prior to entering a contract (GDPR Art. 6(1)(b)).'})+
+  sec({hu:'Megőrzési idő',en:'Retention'},{hu:'Az adatokat a kapcsolatfelvétel lezárását követően legfeljebb [X] évig őrizzük, vagy a hozzájárulás visszavonásáig.',en:'Data is kept for up to [X] years after the enquiry is closed, or until consent is withdrawn.'})+
+  sec({hu:'Adatfeldolgozók',en:'Processors'},{hu:'Tárhelyszolgáltató és e-mail-szolgáltató: [nevek kitöltendők]. Adatot harmadik félnek nem adunk el.',en:'Hosting and e-mail providers: [names to be completed]. We do not sell data to third parties.'})+
+  sec({hu:'Az Ön jogai',en:'Your rights'},{hu:'Hozzáférés, helyesbítés, törlés, az adatkezelés korlátozása, adathordozhatóság, tiltakozás, valamint a hozzájárulás bármikori visszavonása. Kérését az info@lanartis.com címre küldheti.',en:'Access, rectification, erasure, restriction, portability, objection and withdrawal of consent at any time. Send requests to info@lanartis.com.'})+
+  sec({hu:'Panasz',en:'Complaints'},{hu:'Nemzeti Adatvédelmi és Információszabadság Hatóság (NAIH), 1055 Budapest, Falk Miksa utca 9–11., www.naih.hu.',en:'Hungarian National Authority for Data Protection and Freedom of Information (NAIH), 1055 Budapest, Falk Miksa utca 9–11., www.naih.hu.'}));
+}
+function sutik(){
+  const sec=(h,t)=>`<h2>${L(h)}</h2><p>${L(t)}</p>`;
+  return legalPage({hu:'Sütimentes weboldal',en:'Cookie-free website'},{hu:'100% sütimentes · minden adat az EU-ban tárolva',en:'100% cookie-free · all data hosted in the EU'},
+  sec({hu:'Nem használunk sütiket',en:'We use no cookies'},{hu:'A weboldal semmilyen sütit nem helyez el: nincs analitika, nincs hirdetési vagy követő süti, ezért süti-hozzájárulást sem kérünk.',en:'This website sets no cookies at all: no analytics, advertising or tracking cookies, so no cookie consent is needed.'})+
+  sec({hu:'Helyi beállítások',en:'Local preferences'},{hu:'A választott nyelvet és a világos/sötét megjelenést a böngésző helyi tárhelye jegyzi meg. Ez nem süti, nem kerül el a szerverre, és személyes adatot nem tartalmaz; a böngésző webhelyadatainak törlésével bármikor eltávolítható.',en:'Your chosen language and light/dark appearance are remembered in your browser’s local storage. This is not a cookie, is never sent to a server and contains no personal data; you can remove it by clearing the site data in your browser.'})+
+  sec({hu:'EU-s adattárolás',en:'Data hosted in the EU'},{hu:'A weboldal és a kapcsolatfelvételi űrlapon küldött adatok az Európai Unión belüli szervereken kerülnek tárolásra.',en:'The website and data sent via the contact form are stored on servers within the European Union.'}));
+}
+
+/* ---------- PROCEDURAL PHOTO STAND-INS ---------- */
+function rng(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function hash(str){let h=2166136261;for(const c of str)h=Math.imul(h^c.charCodeAt(0),16777619);return h>>>0}
+function lin(ctx,w,h,stops,x0=0,y0=0,x1=0,y1=h){const g=ctx.createLinearGradient(x0,y0,x1,y1);stops.forEach((c,i)=>g.addColorStop(i/(stops.length-1),c));ctx.fillStyle=g;ctx.fillRect(0,0,w,h)}
+function blob(ctx,x,y,r,c0,c1){const g=ctx.createRadialGradient(x-r*.3,y-r*.35,r*.1,x,y,r);g.addColorStop(0,c0);g.addColorStop(1,c1);ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,r,0,7);ctx.fill()}
+function bokeh(ctx,w,h,R,n,col){for(let i=0;i<n;i++){ctx.globalAlpha=.05+R()*.12;ctx.fillStyle=col;ctx.beginPath();ctx.arc(R()*w,R()*h,(8+R()*60)*w/900,0,7);ctx.fill()}ctx.globalAlpha=1}
+function grain(ctx,w,h,R,a=.07){const d=ctx.getImageData(0,0,w,h),p=d.data;for(let i=0;i<p.length;i+=4){const n=(R()-.5)*255*a;p[i]+=n;p[i+1]+=n;p[i+2]+=n}ctx.putImageData(d,0,0)}
+function fish(ctx,x,y,s,a,col){ctx.save();ctx.translate(x,y);ctx.rotate(a);ctx.fillStyle=col;ctx.beginPath();ctx.ellipse(0,0,s,s*.28,0,0,7);ctx.fill();ctx.beginPath();ctx.moveTo(-s*.9,0);ctx.lineTo(-s*1.35,-s*.25);ctx.lineTo(-s*1.35,s*.25);ctx.fill();ctx.restore()}
+const ART={
+ hero(c,w,h,R){lin(c,w,h,['#9BB9A4','#3E6B5C','#12302C']);c.globalAlpha=.35;for(let i=0;i<70;i++){c.strokeStyle=R()>.5?'#E9F2D9':'#7FB3A6';c.lineWidth=(1+R()*2)*w/1200;c.beginPath();let y=h*(.35+R()*.65);c.moveTo(0,y);for(let x=0;x<=w;x+=w/12)c.lineTo(x,y+Math.sin(x/w*8+i)*h*.02);c.stroke()}c.globalAlpha=1;
+   for(let i=0;i<14;i++)fish(c,R()*w,h*(.55+R()*.4),(20+R()*40)*w/1200,(R()-.5)*.8,'rgba(10,30,26,.35)');
+   const sx=w*.72;for(let i=0;i<220;i++){const a=-Math.PI/2+(R()-.5)*1.3,l=h*(.25+R()*.5);c.strokeStyle=`hsla(${70+R()*30},55%,${45+R()*25}%,.55)`;c.lineWidth=(1+R()*3)*w/1400;c.beginPath();c.moveTo(sx+(R()-.5)*w*.5,h);c.quadraticCurveTo(sx+Math.cos(a)*l*.3,h-l*.5,sx+(R()-.5)*w*.6,h-l);c.stroke()}
+   bokeh(c,w,h,R,40,'#F8F3D0')},
+ field(c,w,h,R){lin(c,w,h,['#F4E3A7','#E0B55A','#8C6A2A']);bokeh(c,w,h*.5,R,40,'#FFF6D8');for(let i=0;i<420;i++){const x=R()*w,l=h*(.2+R()*.6);c.strokeStyle=`hsla(${38+R()*14},${55+R()*25}%,${35+R()*35}%,.7)`;c.lineWidth=(1+R()*2.5)*w/1200;c.beginPath();c.moveTo(x,h);c.quadraticCurveTo(x+(R()-.5)*40,h-l*.6,x+(R()-.5)*60,h-l);c.stroke();c.fillStyle=c.strokeStyle;c.beginPath();c.ellipse(x+(R()-.5)*60,h-l,3*w/900,12*w/900,R(),0,7);c.fill()}},
+ water(c,w,h,R){lin(c,w,h,['#5FA6A5','#1F5E63','#0B2A30']);c.globalAlpha=.22;for(let i=0;i<120;i++){c.strokeStyle='#CDEFE8';c.lineWidth=(.8+R()*2)*w/1200;c.beginPath();const cx=R()*w,cy=R()*h,r=(20+R()*80)*w/900;c.ellipse(cx,cy,r,r*.35,0,0,7);c.stroke()}c.globalAlpha=1;for(let i=0;i<22;i++)fish(c,R()*w,R()*h,(24+R()*50)*w/1200,(R()-.5)*1.2,'rgba(8,24,26,.45)')},
+ catfish(c,w,h,R){lin(c,w,h,['#3B4A45','#1B2522','#0E1412']);for(let i=0;i<9;i++)fish(c,w*(.1+R()*.8),h*(.2+R()*.7),(60+R()*80)*w/900,(R()-.5)*.6,`rgba(${90+R()*40},${90+R()*30},${80+R()*20},.8)`);bokeh(c,w,h,R,20,'#9CC7B7')},
+ carp(c,w,h,R){lin(c,w,h,['#6E8F6A','#3C5A3F','#1C2B1E']);for(let i=0;i<6;i++){const s=(80+R()*90)*w/900;fish(c,w*(.15+R()*.7),h*(.25+R()*.6),s,(R()-.5)*.5,`hsla(${35+R()*15},55%,${38+R()*15}%,.95)`)}bokeh(c,w,h,R,24,'#E8E1B0')},
+ lake(c,w,h,R){lin(c,w,h*.55,['#F6D39A','#E7A86B','#B77B5B']);c.fillStyle='#2D3F3B';c.beginPath();c.moveTo(0,h*.5);for(let x=0;x<=w;x+=w/10)c.lineTo(x,h*(.44+R()*.08));c.lineTo(w,h*.56);c.lineTo(0,h*.56);c.fill();const g=c.createLinearGradient(0,h*.55,0,h);g.addColorStop(0,'#C28A60');g.addColorStop(1,'#243431');c.fillStyle=g;c.fillRect(0,h*.55,w,h*.45);c.globalAlpha=.35;for(let i=0;i<60;i++){c.strokeStyle='#FBE3B8';c.lineWidth=w/900;const y=h*(.58+R()*.4);c.beginPath();c.moveTo(w*R(),y);c.lineTo(w*R(),y);c.stroke()}c.globalAlpha=1;blob(c,w*.7,h*.3,w*.06,'#FFF3D6','rgba(255,220,160,0)')},
+ powder(c,w,h,R){lin(c,w,h,['#E9D2A2','#C39A5B','#7C5A2E']);for(let i=0;i<9000;i++){c.fillStyle=`hsla(${30+R()*15},${40+R()*30}%,${30+R()*50}%,${.3+R()*.5})`;const x=R()*w,y=h*.35+Math.pow(R(),.6)*h*.65;c.fillRect(x,y,1.5*w/900,1.5*w/900)}const g=c.createRadialGradient(w*.5,h*1.1,w*.05,w*.5,h*1.1,w*.7);g.addColorStop(0,'rgba(255,240,200,.35)');g.addColorStop(1,'rgba(0,0,0,0)');c.fillStyle=g;c.fillRect(0,0,w,h)},
+ cubes(c,w,h,R){lin(c,w,h,['#C9A27A','#8A5F3C','#4B2F1D']);for(let i=0;i<9;i++){c.strokeStyle='rgba(60,35,20,.25)';c.lineWidth=2*w/900;c.beginPath();c.moveTo(0,h*i/9);c.lineTo(w,h*i/9+h*.04);c.stroke()}for(let i=0;i<34;i++){const s=(40+R()*55)*w/900,x=R()*w,y=R()*h;c.save();c.translate(x,y);c.rotate((R()-.5)*.8);const g=c.createLinearGradient(-s/2,-s/2,s/2,s/2);g.addColorStop(0,`hsl(${355+R()*10},${55+R()*15}%,${48+R()*10}%)`);g.addColorStop(1,`hsl(${5+R()*10},60%,${24+R()*8}%)`);c.fillStyle=g;c.beginPath();c.roundRect(-s/2,-s/2,s,s,s*.18);c.fill();c.strokeStyle='rgba(255,230,220,.35)';c.lineWidth=s*.04;c.beginPath();c.moveTo(-s*.3,-s*.1);c.bezierCurveTo(-s*.1,s*.2,s*.1,-s*.2,s*.35,s*.1);c.stroke();c.restore()}},
+ meat(c,w,h,R){lin(c,w,h,['#B4524A','#7C2B27','#3F1512']);for(let i=0;i<80;i++){c.strokeStyle=`rgba(255,${200+R()*40},${200+R()*40},${.15+R()*.3})`;c.lineWidth=(2+R()*6)*w/900;c.beginPath();c.moveTo(R()*w,R()*h);c.bezierCurveTo(R()*w,R()*h,R()*w,R()*h,R()*w,R()*h);c.stroke()}},
+ veg(c,w,h,R){lin(c,w,h,['#EFE6D2','#D8C9A8','#B5A27E']);for(let i=0;i<40;i++){const s=(30+R()*50)*w/900,x=R()*w,y=R()*h;c.save();c.translate(x,y);c.rotate(R()*3);c.fillStyle=`hsl(${22+R()*18},${80+R()*15}%,${48+R()*12}%)`;c.beginPath();c.roundRect(-s/2,-s/3,s,s*.66,s*.15);c.fill();c.restore()}},
+ fruit(c,w,h,R){lin(c,w,h,['#E8E2F0','#B6A7C9','#5B4A73']);for(let i=0;i<70;i++){const r=(14+R()*30)*w/900;blob(c,R()*w,R()*h,r,`hsl(${250+R()*40},45%,62%)`,`hsl(${250+R()*30},55%,22%)`)}},
+ puree(c,w,h,R){lin(c,w,h,['#F7C98A','#EA8E4E','#B44D2C']);c.globalAlpha=.35;for(let i=0;i<40;i++){c.strokeStyle='#FFE6C4';c.lineWidth=(3+R()*10)*w/900;c.beginPath();const cx=w*.5,cy=h*.5,r=(40+i*14)*w/900;c.arc(cx,cy,r,R()*6,R()*6+2);c.stroke()}c.globalAlpha=1},
+ pellet(c,w,h,R){lin(c,w,h,['#6B5037','#3E2C1D','#1E150D']);for(let i=0;i<340;i++){const r=(8+R()*9)*w/900;blob(c,R()*w,R()*h,r,`hsl(${28+R()*10},40%,${45+R()*15}%)`,`hsl(${25+R()*8},45%,${14+R()*8}%)`)}},
+ boilies(c,w,h,R){lin(c,w,h,['#A3AF77','#5E6B38','#2A3218']);for(let i=0;i<70;i++){const r=(20+R()*22)*w/900;const hue=[35,15,50,0][Math.floor(R()*4)];blob(c,R()*w,R()*h,r,`hsl(${hue},70%,${65+R()*15}%)`,`hsl(${hue},60%,${28+R()*10}%)`)}},
+ mushroom(c,w,h,R){lin(c,w,h,['#4A3A2C','#2A2019','#120D09']);bokeh(c,w,h,R,26,'#E7C9A0');for(let k=0;k<3;k++){const cx=w*(.25+k*.25+ (R()-.5)*.1),cy=h*(.5+R()*.2),r=w*(.12+R()*.06);const g=c.createRadialGradient(cx-r*.3,cy-r*.4,r*.1,cx,cy,r);g.addColorStop(0,'#C7874A');g.addColorStop(.7,'#7A3F1E');g.addColorStop(1,'#3A1B0C');c.fillStyle=g;c.beginPath();c.ellipse(cx,cy,r,r*.62,(R()-.5)*.4,0,7);c.fill();c.strokeStyle='rgba(255,220,170,.25)';c.lineWidth=w/700;for(let i=0;i<22;i++){c.beginPath();c.ellipse(cx,cy,r*i/22,r*.62*i/22,0,0,7);c.stroke()}}},
+ mushroom2(c,w,h,R){lin(c,w,h,['#E9E0CF','#C9B89A','#7E6A4E']);for(let i=0;i<60;i++){const x=R()*w,y=h,l=h*(.3+R()*.5);c.strokeStyle=`hsl(${18+R()*14},${75+R()*15}%,${45+R()*12}%)`;c.lineWidth=(6+R()*8)*w/900;c.lineCap='round';c.beginPath();c.moveTo(x,y);c.quadraticCurveTo(x+(R()-.5)*60,y-l*.5,x+(R()-.5)*80,y-l);c.stroke()}}
+};
+function paint(el){
+  const art=el.dataset.art; if(IMG[art]&&!el.querySelector(':scope > img, :scope > video')){const im=document.createElement('img');im.src=IMG[art];im.alt='';im.decoding='async';el.prepend(im)} if(IMG[art]||el.querySelector('video')||!ART[art]) return;
+  let cv=el.querySelector('canvas'); if(!cv){cv=document.createElement('canvas');cv.setAttribute('aria-hidden','true');el.prepend(cv)}
+  const dpr=Math.min(window.devicePixelRatio||1,1.5);const w=Math.max(80,Math.round(el.clientWidth*dpr)),h=Math.max(80,Math.round(el.clientHeight*1.12*dpr));
+  if(cv.width===w&&cv.height===h) return; cv.width=w;cv.height=h;
+  const ctx=cv.getContext('2d');const R=rng(hash(art+(el.dataset.seed||'')));ART[art](ctx,w,h,R);grain(ctx,w,h,R,.06);
+}
+
+
+
+function initInteractive(){
+  // sticky scrollytelling
+  document.querySelectorAll('.sticky-wrap').forEach(w=>{
+    const items=[...w.querySelectorAll('.st-item')], imgs=[...w.querySelectorAll('.st-frame img,.st-frame .need-abs')];
+    const set=i=>{items.forEach(x=>x.classList.toggle('on',+x.dataset.i===i));imgs.forEach(x=>x.classList.toggle('on',+x.dataset.i===i))};
+    const pick=()=>{if(!document.body.contains(w)){removeEventListener('scroll',pick);return}const fr=w.querySelector('.st-frame');const fb=fr&&fr.offsetParent?fr.getBoundingClientRect():null;const line=fb?fb.top+fb.height*.85:innerHeight*.6;let a=0;items.forEach((x,i)=>{const t=x.querySelector('h3').getBoundingClientRect().top;if(t<line)a=i});set(a)};
+    addEventListener('scroll',pick,{passive:true});pick();
+  });
+  // hover list
+  document.querySelectorAll('.hv').forEach(w=>{
+    const li=[...w.querySelectorAll('.hv-list li')], im=[...w.querySelectorAll('.hv-media img,.hv-media .need-abs')];
+    const set=i=>{li.forEach(x=>x.classList.toggle('on',+x.dataset.i===i));im.forEach(x=>x.classList.toggle('on',+x.dataset.i===i))};
+    li.forEach(x=>{x.addEventListener('mouseenter',()=>set(+x.dataset.i));x.addEventListener('focus',()=>set(+x.dataset.i));x.addEventListener('click',()=>set(+x.dataset.i))});
+  });
+  // tabs
+  document.querySelectorAll('.tabs').forEach(w=>{
+    w.querySelectorAll('.tab-bar button').forEach(bt=>bt.addEventListener('click',()=>{
+      w.querySelectorAll('.tab-bar button').forEach(x=>x.setAttribute('aria-selected',String(x===bt)));
+      w.querySelectorAll('.pills-l').forEach(u=>u.hidden=u.dataset.i!==bt.dataset.i);
+    }));
+    w.querySelectorAll('.pills-l li').forEach((li,i)=>li.style.setProperty('--k',(i%20)*35));
+  });
+  // horizontal scroller
+  document.querySelectorAll('.hs-wrap').forEach(w=>{const s=w.querySelector('.hs');w.querySelectorAll('.hs-btn').forEach(b=>b.addEventListener('click',()=>s.scrollBy({left:+b.dataset.d*s.clientWidth*.8,behavior:'smooth'})))});
+  document.querySelectorAll('.xp-row').forEach(r=>{const xs=[...r.querySelectorAll('.xp')];const set=x=>xs.forEach(y=>y.classList.toggle('on',y===x));xs.forEach(x=>{x.addEventListener('mouseenter',()=>set(x));x.addEventListener('focus',()=>set(x));x.addEventListener('click',()=>set(x))})});
+  // count-up
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('[data-count]').forEach(el=>{const n=+el.dataset.count;if(!el.dataset.count)return;if(reduce){el.textContent=n;return}
+    const o=new IntersectionObserver(es=>{if(!es[0].isIntersecting)return;o.disconnect();const t0=performance.now();const tick=t=>{const p=Math.min(1,(t-t0)/1400);el.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(tick)};requestAnimationFrame(tick)});o.observe(el)});
+}
+
+/* ---------- ROUTER / BEHAVIOUR ---------- */
+const app=document.getElementById('app');
+const pages={home,contact,impresszum,adatkezeles,sutik}; ORDER.forEach(k=>pages[k]=()=>division(k));
+let io;
+function mount(){
+  let id=(location.hash||'#home').slice(1); if(!pages[id]) id='home';
+  app.innerHTML=pages[id]();
+  document.querySelectorAll('nav a').forEach(a=>a.getAttribute('href')==='#'+id?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
+  document.getElementById('mobile-nav').hidden=true; document.getElementById('menu-btn').setAttribute('aria-expanded','false');
+  window.scrollTo({top:0,behavior:'instant'});
+  document.querySelectorAll('.ph').forEach((el,i)=>{el.dataset.seed=i;paint(el)});
+  document.querySelectorAll('video[data-hd]').forEach(v=>{const px=Math.max(screen.width,innerWidth)*(devicePixelRatio||1);v.src=px>=2400?v.dataset.uhd:v.dataset.hd;v.play&&v.play().catch(()=>{})});
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.querySelectorAll('video').forEach(v=>{v.autoplay=false;v.pause()});
+  initInteractive();
+  io&&io.disconnect();
+  if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+    io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.remove('pre');io.unobserve(e.target)}}),{rootMargin:'0px 0px -6% 0px'});
+    document.querySelectorAll('.rv,.clip').forEach(el=>{if(el.getBoundingClientRect().top>innerHeight*.94){el.classList.add('pre');io.observe(el)}});
+  }
+  document.querySelectorAll('[data-fill],.story-fill').forEach(el=>{const tw=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);const ns=[];while(tw.nextNode())ns.push(tw.currentNode);ns.forEach(n=>{const f=document.createDocumentFragment();n.textContent.split(/(\s+)/).forEach(t=>{if(!t)return;if(/^\s+$/.test(t))f.appendChild(document.createTextNode(t));else{const sp=document.createElement('span');sp.className='w';sp.textContent=t;f.appendChild(sp)}});n.replaceWith(f)})});
+  document.querySelectorAll('.ct-d').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const r=document.querySelector(`input[name=division][value="${a.dataset.div}"]`);if(r){r.checked=true;document.getElementById('cform').scrollIntoView({behavior:'smooth',block:'start'});setTimeout(()=>document.getElementById('f-name').focus({preventScroll:true}),600)}}));
+  const ck=document.getElementById('ct-clock');if(ck){const tick=()=>{if(!document.body.contains(ck))return;const t=new Intl.DateTimeFormat('hu-HU',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Budapest'}).format(new Date());ck.textContent=(root.dataset.lang==='en'?'Hungary, local time ':'Magyarország, helyi idő ')+t;setTimeout(tick,30000)};tick()}
+  const cf=document.getElementById('cform');
+  if(cf) cf.addEventListener('submit',e=>{e.preventDefault();let ok=true;const st=document.getElementById('f-status');
+    const need=[['f-name',v=>v.trim().length>1],['f-email',v=>/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)],['f-msg',v=>v.trim().length>4]];
+    need.forEach(([id,t])=>{const el=document.getElementById(id);const bad=!t(el.value);el.closest('.fld').classList.toggle('bad',bad);if(bad)ok=false});
+    const dv=cf.querySelector('input[name=division]:checked');cf.querySelector('.chipsel').classList.toggle('bad',!dv);if(!dv)ok=false;
+    const g=document.getElementById('f-gdpr');g.closest('.consent').classList.toggle('bad',!g.checked);if(!g.checked)ok=false;
+    const hu=root.dataset.lang!=='en';
+    if(!ok){st.className='f-status';st.textContent=hu?'Kérjük, töltse ki a csillaggal jelölt mezőket.':'Please fill in the fields marked with *.';return}
+    st.className='f-status ok';st.textContent=hu?'Tervezési minta: élesítéskor ez az üzenet az info@lanartis.com címre megy.':'Design preview: once live, this message goes to info@lanartis.com.';});
+  const cm=document.getElementById('copy-mail');
+  if(cm) cm.addEventListener('click',()=>{const t=document.getElementById('mail');const sel=()=>{const r=document.createRange();r.selectNodeContents(t);const s=getSelection();s.removeAllRanges();s.addRange(r)};navigator.clipboard?navigator.clipboard.writeText(t.textContent).catch(sel):sel()});
+  onScroll();
+}
+const LANGS=[{code:'hu',label:'Magyar'},{code:'en',label:'English'}];
+const lddBtn=document.getElementById('ldd-btn'), lddList=document.getElementById('ldd-list');
+lddList.innerHTML=LANGS.map(x=>`<li role="option" tabindex="0" data-code="${x.code}">${x.label}<small>${x.code.toUpperCase()}</small></li>`).join('');
+function setLang(l){root.dataset.lang=l;document.querySelectorAll('[data-ph-hu]').forEach(i=>i.placeholder=i.dataset['ph'+(l==='en'?'En':'Hu')]);root.lang=l;document.getElementById('ldd-cur').textContent=l.toUpperCase();lddList.querySelectorAll('li').forEach(li=>li.setAttribute('aria-selected',String(li.dataset.code===l)));try{localStorage.setItem('lanartis-lang',l)}catch(e){}}
+let saved=null;try{saved=localStorage.getItem('lanartis-lang')}catch(e){}
+setLang(LANGS.some(x=>x.code===saved)?saved:'hu');
+const closeLdd=()=>{lddList.hidden=true;lddBtn.setAttribute('aria-expanded','false')};
+lddBtn.addEventListener('click',e=>{e.stopPropagation();const open=lddList.hidden;lddList.hidden=!open;lddBtn.setAttribute('aria-expanded',String(open));if(open)lddList.querySelector('li[aria-selected="true"]')?.focus()});
+lddList.addEventListener('click',e=>{const li=e.target.closest('li');if(li){setLang(li.dataset.code);closeLdd();lddBtn.focus()}});
+lddList.addEventListener('keydown',e=>{const li=e.target.closest('li');if(!li)return;if(e.key==='Enter'||e.key===' '){e.preventDefault();li.click()}if(e.key==='Escape'){closeLdd();lddBtn.focus()}if(e.key==='ArrowDown')(li.nextElementSibling||li).focus();if(e.key==='ArrowUp')(li.previousElementSibling||li).focus()});
+document.addEventListener('click',e=>{if(!e.target.closest('.ldd'))closeLdd()});
+const themeBtn=document.getElementById('theme-btn');
+function isDark(){return root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches}
+function setTheme(t){root.dataset.theme=t;try{localStorage.setItem('lanartis-theme',t)}catch(e){}}
+let th=null;try{th=localStorage.getItem('lanartis-theme')}catch(e){} if(th==='dark'||th==='light')root.dataset.theme=th;
+themeBtn.addEventListener('click',()=>setTheme(isDark()?'light':'dark'));
+document.getElementById('menu-btn').addEventListener('click',e=>{const m=document.getElementById('mobile-nav');m.hidden=!m.hidden;e.currentTarget.setAttribute('aria-expanded',String(!m.hidden));hdr.classList.add('solid')});
+
+const hdr=document.getElementById('hdr'),prog=document.getElementById('progress');
+let lastY=0,ticking=false;
+function onScroll(){
+  const y=scrollY,max=document.documentElement.scrollHeight-innerHeight;
+  hdr.classList.toggle('solid',y>40||!document.getElementById('mobile-nav').hidden);
+  hdr.classList.toggle('hide',y>lastY&&y>300&&document.getElementById('mobile-nav').hidden);
+  lastY=y;
+  prog.style.transform=`scaleX(${max>0?y/max:0})`;
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('[data-parallax]').forEach(el=>{const r=el.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;const cv=el.querySelector(':scope > video, :scope > img, :scope > canvas');if(cv)cv.style.transform=`translateY(${(r.top*-.12).toFixed(1)}px)`});
+  }
+  document.querySelectorAll('[data-fill]').forEach(el=>{const r=el.getBoundingClientRect();const p=Math.min(1,Math.max(0,(innerHeight*.9-r.top)/(r.height+innerHeight*.45)));const ws=[...el.querySelectorAll('.w')].filter(w=>w.offsetParent!==null);const k=Math.round(p*ws.length);ws.forEach((w,i)=>w.classList.toggle('on',i<k||matchMedia('(prefers-reduced-motion: reduce)').matches));el.querySelectorAll('.ipill').forEach(pl=>{const pv=pl.parentElement.style.whiteSpace==='nowrap'?pl.parentElement.previousElementSibling:pl.previousElementSibling;pl.classList.toggle('on',!pv||pv.classList.contains('on'))})});
+  const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.story').forEach(sec=>{const r=sec.getBoundingClientRect();const span=Math.max(1,r.height-innerHeight);const p=Math.min(1,Math.max(0,-r.top/span));
+    const ws=[...sec.querySelectorAll('.story-fill .w')].filter(w=>w.offsetParent!==null);const k=rm?ws.length:Math.round(Math.min(1,(p+0.08)/0.5)*ws.length);ws.forEach((w,i)=>w.classList.toggle('on',i<k));
+    const t=sec.querySelector('.story-text');const pb=rm?0:Math.min(1,Math.max(0,(p-0.62)/0.38));
+    t.style.filter=pb>0.001?`blur(${(pb*12).toFixed(2)}px)`:'';t.style.opacity=(1-pb*.92).toFixed(3);t.style.transform=pb>0.001?`translateY(${(-pb*50).toFixed(1)}px) scale(${(1-pb*.03).toFixed(3)})`:'';});
+  ticking=false;
+}
+addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(onScroll)}},{passive:true});
+let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>document.querySelectorAll('.ph').forEach(paint),200)});
+addEventListener('hashchange',mount);
+mount();
+})();
+</script>
+
+</body>
+</html>

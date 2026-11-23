@@ -138,6 +138,7 @@ nav.main a[aria-current="page"]{color:var(--accent)}
 .wave{display:none}
 .statement{font:400 clamp(1.5rem,3vw,2.6rem)/1.22 var(--f); letter-spacing:-.025em; color:var(--ink); max-width:30ch; text-wrap:pretty}
 .statement .ser{font-size:1.06em}
+.center .statement{max-width:34ch; text-wrap:balance}
 [data-fill] .w{color:var(--faint); transition:color .4s}
 [data-fill] .w.on{color:var(--ink)}
 .split{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,2.2fr); gap:clamp(24px,5vw,80px)}
@@ -631,8 +632,8 @@ nav.main .ndd-list a{display:grid; grid-template-columns:40px minmax(0,1fr) auto
       <div><h4 id="fh-con"></h4><ul class="foot-contact">
         <li><span class="fk">E-mail</span><span class="fv">info@lanartis.com</span></li>
         <li><span class="fk" id="fk-tel"></span><span class="fv">+36 30 652 26 27</span></li>
-        <li><span class="fk">Lanartis Group Kft.</span><span class="fv">6200 Kiskőrös, Szendrey Júlia u. 3/1.</span></li>
-        <li><span class="fk">Lanartis Feed Kft.</span><span class="fv" id="fv-feed"></span></li>
+        <li><span class="fk">Lanartis Group&nbsp;Kft.</span><span class="fv">6200 Kiskőrös, Szendrey Júlia u. 3/1.</span></li>
+        <li><span class="fk">Lanartis Feed&nbsp;Kft.</span><span class="fv" id="fv-feed"></span></li>
       </ul></div>
       <div><h4 id="fh-div"></h4><ul id="foot-divs"></ul></div>
       <div><h4 id="fh-grp"></h4><ul id="foot-grp"></ul></div>
@@ -974,7 +975,7 @@ function home(){
     <span class="label rv">${L({hu:'A csoportról',en:'About the group'})}</span>
     <h2 class="rv grp-h">${L({hu:'Azt gyártjuk, <span class="ser">amit eladunk.</span>',en:'We make <span class="ser">what we sell.</span>'})}</h2>
     <p class="statement" data-fill>${L({hu:'Alapanyagokat forgalmazunk, és ugyanezekből saját üzemeinkben takarmányt gyártunk. Vagyis nemcsak eladjuk az alapanyagot, hanem mi magunk is dolgozunk vele.',en:'We trade raw materials and use the same materials to make feed in our own plants. That means we know every ingredient as both a buyer and a user.'})}</p>
-    <p class="grp-facts rv">${L({hu:'A Lanartis Group Kft. kiskőrösi székhelyű magyar agrár-élelmiszeripari vállalkozás. A <b>Lanartis Trade Kft.</b> takarmány-, élelmiszer-, energetikai és szerves trágya-alapanyagokat forgalmaz. A <b>Lanartis Feed Kft.</b> saját magyarországi üzemében haltápot, horgászcsalit, vadtakarmányt, gombadúsítót, fagyasztva szárított állateledelt és folyékony Bacillus subtilis kultúrát gyárt. Vevőink európai cégek, elsősorban Közép- és Kelet-Európában.',en:'Lanartis Group Kft. is a Hungarian agri-food company based in Kiskőrös. <b>Lanartis Trade Kft.</b> supplies feed, food, energy and organic fertiliser ingredients. <b>Lanartis Feed Kft.</b> manufactures fish feed, fishing bait, game feed, mushroom supplements, freeze-dried pet food and liquid Bacillus subtilis cultures at its own plant in Hungary. Our customers are European businesses, mainly in Central and Eastern Europe.'})}</p>
+    <p class="grp-facts rv">${L({hu:'A Lanartis Group&nbsp;Kft. kiskőrösi székhelyű magyar agrár-élelmiszeripari vállalkozás. A <b>Lanartis Trade&nbsp;Kft.</b> takarmány-, élelmiszer-, energetikai és szerves trágya-alapanyagokat forgalmaz. A <b>Lanartis Feed&nbsp;Kft.</b> saját magyarországi üzemében haltápot, horgászcsalit, vadtakarmányt, gombadúsítót, fagyasztva szárított állateledelt és folyékony Bacillus subtilis kultúrát gyárt. Vevőink európai cégek, elsősorban Közép- és Kelet-Európában.',en:'Lanartis Group&nbsp;Kft. is a Hungarian agri-food company based in Kiskőrös. <b>Lanartis Trade&nbsp;Kft.</b> supplies feed, food, energy and organic fertiliser ingredients. <b>Lanartis Feed&nbsp;Kft.</b> manufactures fish feed, fishing bait, game feed, mushroom supplements, freeze-dried pet food and liquid Bacillus subtilis cultures at its own plant in Hungary. Our customers are European businesses, mainly in Central and Eastern Europe.'})}</p>
   </div></section>
   <section class="story" aria-label="Lanartis Group">
     <div class="story-in ph shade" data-art="story-dog">
@@ -987,7 +988,7 @@ function home(){
   <section class="pad" style="padding-block:clamp(72px,10vw,150px)">
     <span class="label rv">${L({hu:'Ahogy dolgozunk',en:'One method for everything we make'})}</span>
     <p class="big-line" data-fill><span class="hu">Fagyasztva szárítunk, nem <span style="white-space:nowrap">főzünk. <span class="ipill" aria-hidden="true"><img src="img/fd-belsoseg.webp" alt="" loading="lazy"></span></span> Gyógynövényekkel dolgozunk, szintetikus adalékok <span style="white-space:nowrap">nélkül. <span class="ipill" aria-hidden="true"><img src="img/haltap-pellet.webp" alt="" loading="lazy"></span></span> Olyan takarmányt készítünk, amilyenre az állat szervezetének szüksége <span style="white-space:nowrap">van. <span class="ipill" aria-hidden="true"><img src="img/harcsa.webp" alt="" loading="lazy"></span></span> És semmit sem dobunk <span style="white-space:nowrap">ki. <span class="ipill" aria-hidden="true"><img src="img/ing-hero.webp" alt="" loading="lazy"></span></span></span><span class="en">We freeze-dry instead of <span style="white-space:nowrap">cooking. <span class="ipill" aria-hidden="true"><img src="img/fd-belsoseg.webp" alt="" loading="lazy"></span></span> We use herbs, not synthetic <span style="white-space:nowrap">additives. <span class="ipill" aria-hidden="true"><img src="img/haltap-pellet.webp" alt="" loading="lazy"></span></span> We make feed the way an animal’s body <span style="white-space:nowrap">needs it. <span class="ipill" aria-hidden="true"><img src="img/harcsa.webp" alt="" loading="lazy"></span></span> And nothing goes to <span style="white-space:nowrap">waste. <span class="ipill" aria-hidden="true"><img src="img/ing-hero.webp" alt="" loading="lazy"></span></span></span></p>
-    <p class="muted rv" style="font-size:.9rem;margin-top:36px">Lanartis Group Kft. · Lanartis Trade Kft. · Lanartis Feed Kft.</p>
+    <p class="muted rv" style="font-size:.9rem;margin-top:36px">Lanartis Group&nbsp;Kft. · Lanartis Trade&nbsp;Kft. · Lanartis Feed&nbsp;Kft.</p>
   </section>
   ${wave('var(--cream)','var(--night)')}
 
@@ -1069,7 +1070,7 @@ function contact(){
           <div class="ct-card"><span class="k">E-mail</span><code id="mail">info@lanartis.com</code><button type="button" id="copy-mail">${L({hu:'Másolás',en:'Copy'})}</button></div>
           <div class="ct-card"><span class="k">${L({hu:'Telefon',en:'Phone'})}</span><b>+36 30 652 26 27</b><span class="clock" id="ct-clock"></span></div>
         </div>
-        <p class="ct-co fade-in">${L({hu:'<b>Lanartis Trade Kft.</b>: alapanyag-kereskedelem<br><b>Lanartis Feed Kft.</b>: takarmány-, csali-, dúsító- és állateledel-gyártás<br>Magyarországról szállítunk Közép- és Kelet-Európa-szerte.',en:'<b>Lanartis Trade Kft.</b>: raw material trading<br><b>Lanartis Feed Kft.</b>: feed, bait, supplement and pet food manufacturing<br>We deliver from Hungary across Central and Eastern Europe.'})}</p>
+        <p class="ct-co fade-in">${L({hu:'<b>Lanartis Trade&nbsp;Kft.</b>: alapanyag-kereskedelem<br><b>Lanartis Feed&nbsp;Kft.</b>: takarmány-, csali-, dúsító- és állateledel-gyártás<br>Magyarországról szállítunk Közép- és Kelet-Európa-szerte.',en:'<b>Lanartis Trade&nbsp;Kft.</b>: raw material trading<br><b>Lanartis Feed&nbsp;Kft.</b>: feed, bait, supplement and pet food manufacturing<br>We deliver from Hungary across Central and Eastern Europe.'})}</p>
         <ol class="ct-steps fade-in">
           <li><b>01</b><span>${L({hu:'Elküldi az igényét',en:'Send us your request'})}</span></li>
           <li><b>02</b><span>${L({hu:'24 órán belül válaszolunk',en:'We reply within 24 hours'})}</span></li>
@@ -1116,7 +1117,7 @@ const F=t=>`<i class="fill">${t}</i>`;
 function impresszum(){
   const row=(k,v)=>`<div class="lrow"><dt>${L(k)}</dt><dd>${v}</dd></div>`;
   return legalPage({hu:'Impresszum',en:'Legal notice'},{hu:'A weboldal üzemeltetőjének adatai',en:'Website operator details'},`
-  <h2>Lanartis Group Kft.</h2><dl class="ldl">
+  <h2>Lanartis Group&nbsp;Kft.</h2><dl class="ldl">
    ${row({hu:'Teljes név',en:'Full name'},'Lanartis Group Korlátolt Felelősségű Társaság')}
    ${row({hu:'Székhely',en:'Registered office'},'6200 Kiskőrös, Szendrey Júlia utca 3/1.')}
    ${row({hu:'Cégjegyzékszám',en:'Company reg. no.'},'03-09-140194')}
@@ -1126,12 +1127,12 @@ function impresszum(){
    ${row('E-mail','info@lanartis.com')}
    ${row({hu:'Telefon',en:'Phone'},'+36 30 652 26 27')}
   </dl>
-  <h2>Lanartis Trade Kft.</h2><dl class="ldl">
+  <h2>Lanartis Trade&nbsp;Kft.</h2><dl class="ldl">
    ${row({hu:'Székhely',en:'Registered office'},F('[székhely]'))}
    ${row({hu:'Cégjegyzékszám',en:'Company reg. no.'},F('[cégjegyzékszám]'))}
    ${row({hu:'Adószám',en:'Tax number'},F('[adószám]'))}
   </dl>
-  <h2>Lanartis Feed Kft.</h2><dl class="ldl">
+  <h2>Lanartis Feed&nbsp;Kft.</h2><dl class="ldl">
    ${row({hu:'Telephely',en:'Plant'},F('[telephely címe — ha szükséges]'))}
    ${row({hu:'Székhely',en:'Registered office'},F('[székhely]'))}
    ${row({hu:'Cégjegyzékszám',en:'Company reg. no.'},F('[cégjegyzékszám]'))}
@@ -1149,7 +1150,7 @@ function impresszum(){
 function adatkezeles(){
   const sec=(h,t)=>`<h2>${L(h)}</h2><p>${L(t)}</p>`;
   return legalPage({hu:'Adatkezelési tájékoztató',en:'Privacy notice'},{hu:'Hogyan kezeljük az ajánlatkérés során megadott adatokat',en:'How we handle data submitted with an enquiry'},
-  sec({hu:'Adatkezelő',en:'Controller'},{hu:'Lanartis Group Kft. (6200 Kiskőrös, Szendrey Júlia utca 3/1.; cégjegyzékszám: 03-09-140194; adószám: 33025562-2-03; képviseli: Lantos Balázs ügyvezető), e-mail: info@lanartis.com.',en:'Lanartis Group Kft. (6200 Kiskőrös, Szendrey Júlia utca 3/1., Hungary; reg. no. 03-09-140194; tax no. 33025562-2-03; represented by Balázs Lantos, managing director), e-mail: info@lanartis.com.'})+
+  sec({hu:'Adatkezelő',en:'Controller'},{hu:'Lanartis Group&nbsp;Kft. (6200 Kiskőrös, Szendrey Júlia utca 3/1.; cégjegyzékszám: 03-09-140194; adószám: 33025562-2-03; képviseli: Lantos Balázs ügyvezető), e-mail: info@lanartis.com.',en:'Lanartis Group&nbsp;Kft. (6200 Kiskőrös, Szendrey Júlia utca 3/1., Hungary; reg. no. 03-09-140194; tax no. 33025562-2-03; represented by Balázs Lantos, managing director), e-mail: info@lanartis.com.'})+
   sec({hu:'Kezelt adatok',en:'Data processed'},{hu:'A kapcsolatfelvételi űrlapon megadott név, cégnév, e-mail cím, telefonszám, az érdeklődési terület, a mennyiség, a szállítási hely és az üzenet szövege.',en:'Name, company, e-mail, phone number, division of interest, quantity, delivery location and message submitted via the contact form.'})+
   sec({hu:'Cél és jogalap',en:'Purpose and legal basis'},{hu:'Az ajánlatkérés megválaszolása és a kapcsolattartás. Jogalap: az érintett hozzájárulása (GDPR 6. cikk (1) a)), illetve szerződéskötést megelőző lépések (GDPR 6. cikk (1) b)).',en:'Answering the enquiry and keeping in contact. Legal basis: consent (GDPR Art. 6(1)(a)) and steps prior to entering a contract (GDPR Art. 6(1)(b)).'})+
   sec({hu:'Megőrzési idő',en:'Retention'},{hu:'Az adatokat a kapcsolatfelvétel lezárását követően legfeljebb [X] évig őrizzük, vagy a hozzájárulás visszavonásáig.',en:'Data is kept for up to [X] years after the enquiry is closed, or until consent is withdrawn.'})+
